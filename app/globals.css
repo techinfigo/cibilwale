@@ -71,3 +71,85 @@ h4 {
   }
 }
 
+
+/* ---------------------------------------------------------------
+   Blog post body. The markdown in /content/blog renders to plain
+   HTML, so the elements are styled here rather than with utility
+   classes. Kept deliberately close to the rest of the site.
+   --------------------------------------------------------------- */
+.post-content > * + * {
+  margin-top: 1.1rem;
+}
+
+.post-content h2 {
+  margin-top: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.post-content h3 {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.post-content strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.post-content a {
+  color: var(--color-brand-green);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.post-content ul,
+.post-content ol {
+  padding-left: 1.25rem;
+}
+
+.post-content ul {
+  list-style: disc;
+}
+
+.post-content ol {
+  list-style: decimal;
+}
+
+.post-content li + li {
+  margin-top: 0.5rem;
+}
+
+.post-content li::marker {
+  color: var(--color-navy-800);
+}
+
+/* Tables scroll inside their own box rather than pushing the page wide. */
+.post-content table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.post-content th,
+.post-content td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.post-content th {
+  color: var(--color-ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.post-content blockquote {
+  border-left: 3px solid var(--color-line);
+  padding-left: 1rem;
+}

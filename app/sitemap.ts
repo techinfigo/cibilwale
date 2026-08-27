@@ -1,13 +1,14 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 import { siteConfig } from "@/lib/config";
 
 /**
  * Sitemap for every page on the site.
  *
- * Routes are listed explicitly rather than generated from lib/nav.ts,
- * because the nav also links pages that do not exist yet (the blog).
- * A sitemap that points at a 404 is worse than one that omits the page,
- * so add a route here only once its page is live.
+ * Static routes are listed explicitly below; add one here only once its
+ * page is live, because a sitemap that points at a 404 is worse than one
+ * that omits the page. Blog posts are picked up automatically from
+ * /content/blog, so a new post needs no change to this file.
  */
 
 type Entry = {
@@ -63,6 +64,7 @@ const routes: Entry[] = [
   { path: "/about", priority: 0.7, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" },
   { path: "/faq", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
 
   // Legal
   { path: "/privacy-policy", priority: 0.3, changeFrequency: "yearly" },
@@ -74,10 +76,21 @@ const routes: Entry[] = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
-  return routes.map((route) => ({
+  const staticEntries = routes.map((route) => ({
     url: `${siteConfig.url}${route.path}`,
     lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));
+
+  // One entry per markdown file in /content/blog, dated from its own
+  // frontmatter rather than the build time.
+  const postEntries = getAllPosts().map((post) => ({
+    url: `${siteConfig.url}/blog/${post.slug}`,
+    lastModified: post.date ? new Date(post.date) : lastModified,
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...postEntries];
 }
