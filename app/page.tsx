@@ -275,70 +275,139 @@ export default function Home() {
   return (
     <>
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
-            Credit report correction
-          </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-            Wrong entry in your CIBIL report? Get it fixed.
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
-            Loans get rejected every day over mistakes people never made — a
-            written off tag, an old settled status, or someone else&rsquo;s
-            account. We find those errors and dispute them with the credit
-            bureau for you.
-          </p>
+      <section className="hero-navy" aria-label="Why people trust Cibil Wale">
+        <Container className="section-hero">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]">
+            <div>
+              <p className="eyebrow text-navy-100">
+                Credit report correction
+              </p>
+              <h1 className="mt-3 h-display text-white">
+                Wrong entry in your CIBIL report? Get it fixed.
+              </h1>
+              <p className="mt-4 lede max-w-2xl text-navy-100">
+                Loans get rejected every day over mistakes people never made — a
+                written off tag, an old settled status, or someone else&rsquo;s
+                account. We find those errors and dispute them with the credit
+                bureau for you.
+              </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link
-              href="/free-credit-report"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
-            >
-              Check My Credit Report Free
-              <ArrowIcon />
-            </Link>
-            <a
-              href={heroWhatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
-            >
-              <WhatsappIcon />
-              Talk to an Expert
-            </a>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="/free-credit-report"
+                  className="btn btn-primary btn-lg"
+                >
+                  Check My Credit Report Free
+                  <ArrowIcon />
+                </Link>
+                <a
+                  href={heroWhatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary btn-lg"
+                >
+                  <WhatsappIcon />
+                  Talk to an Expert
+                </a>
+              </div>
+
+              {/* Trust strip */}
+              <ul className="trust-strip mt-5">
+                {trustPoints.map((point) => (
+                  <li key={point} className="trust-chip">
+                    <span
+                      aria-hidden="true"
+                      className="text-brand-green-bright"
+                    >
+                      <CheckIcon />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-5 text-sm text-navy-100">
+                Based in {siteConfig.cityState} · Helping customers across all of
+                India
+              </p>
+            </div>
+
+            {/* Score gauge — decorative, drawn entirely in SVG. It shows
+                the direction a corrected report moves in, and carries no
+                claim about any particular score. */}
+            <div className="gauge-card hidden lg:block" aria-hidden="true">
+              <svg viewBox="0 0 200 148" className="w-full">
+                <defs>
+                  <linearGradient id="gaugeFill" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#f59e0b" />
+                    <stop offset="55%" stopColor="#84cc16" />
+                    <stop offset="100%" stopColor="#16a34a" />
+                  </linearGradient>
+                </defs>
+
+                {/* Track */}
+                <path
+                  d="M20 110 A80 80 0 0 1 180 110"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.16)"
+                  strokeWidth="16"
+                  strokeLinecap="round"
+                />
+                {/* Filled arc */}
+                <path
+                  d="M20 110 A80 80 0 0 1 180 110"
+                  fill="none"
+                  stroke="url(#gaugeFill)"
+                  strokeWidth="16"
+                  strokeLinecap="round"
+                  className="gauge-arc"
+                />
+
+                {/* Needle */}
+                <g className="gauge-needle">
+                  <line
+                    x1="100"
+                    y1="110"
+                    x2="100"
+                    y2="48"
+                    stroke="#ffffff"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                  />
+                </g>
+                <circle cx="100" cy="110" r="9" fill="#ffffff" />
+
+                {/* Range ends */}
+                <text
+                  x="20"
+                  y="134"
+                  textAnchor="middle"
+                  fill="rgba(255,255,255,0.65)"
+                  fontSize="13"
+                  fontWeight="700"
+                >
+                  300
+                </text>
+                <text
+                  x="180"
+                  y="134"
+                  textAnchor="middle"
+                  fill="rgba(255,255,255,0.65)"
+                  fontSize="13"
+                  fontWeight="700"
+                >
+                  900
+                </text>
+              </svg>
+            </div>
           </div>
-
-          <p className="mt-6 text-sm text-navy-100">
-            Based in {siteConfig.cityState} · Helping customers across all of
-            India
-          </p>
-        </Container>
-      </section>
-
-      {/* 2. Trust bar ----------------------------------------------- */}
-      <section
-        aria-label="Why people trust Cibil Wale"
-        className="border-b border-line bg-surface"
-      >
-        <Container className="py-6">
-          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {trustPoints.map((point) => (
-              <li key={point} className="flex items-center gap-2.5">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
-                  <CheckIcon />
-                </span>
-                <span className="text-sm font-medium text-ink">{point}</span>
-              </li>
-            ))}
-          </ul>
         </Container>
       </section>
 
       {/* 3. Problems we fix ----------------------------------------- */}
       <section aria-labelledby="problems-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="problems-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="problems-heading" className="h-section">
             Problems we fix
           </h2>
           <p className="mt-3 max-w-2xl">
@@ -346,18 +415,18 @@ export default function Home() {
             any of them are wrong in your report, they can be disputed.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {problems.map((problem) => (
-              <li key={problem.href}>
-                <Link
-                  href={problem.href}
-                  className="flex h-full flex-col rounded-xl border border-line bg-white p-5 hover:border-navy-100 hover:bg-navy-50"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-green-light text-brand-green">
+          <ul className="steps steps-two mt-12">
+            {problems.map((problem, index) => (
+              <li
+                key={problem.href}
+                className={`card card-link ${index === 0 ? "card-feature sm:col-span-2 lg:col-span-1" : ""}`}
+              >
+                <Link href={problem.href} className="stretched flex h-full flex-col">
+                  <span className="icon-tile icon-tile-lg">
                     <ProblemIcon name={problem.icon} />
                   </span>
-                  <h3 className="mt-4 text-lg font-semibold">{problem.title}</h3>
-                  <p className="mt-2 text-[0.95rem]">{problem.body}</p>
+                  <h3 className="mt-5 h-card">{problem.title}</h3>
+                  <p className="mt-2">{problem.body}</p>
                   <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green">
                     Learn more
                     <ArrowIcon />
@@ -372,30 +441,24 @@ export default function Home() {
       {/* 4. How it works -------------------------------------------- */}
       <section
         aria-labelledby="how-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="how-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="how-heading" className="h-section">
             How it works
           </h2>
           <p className="mt-3 max-w-2xl">
             Four steps, and you know where your case stands at each one.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="steps steps-row mt-12">
             {steps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
@@ -404,20 +467,20 @@ export default function Home() {
 
       {/* 5. Why Cibil Wale ------------------------------------------ */}
       <section aria-labelledby="why-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="why-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="why-heading" className="h-section">
             Why {siteConfig.name}
           </h2>
 
-          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-5">
             {reasons.map((reason) => (
               <li key={reason.title} className="flex gap-3">
-                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                <span className="icon-tile icon-round">
                   <CheckIcon />
                 </span>
                 <div>
-                  <h3 className="text-lg font-semibold">{reason.title}</h3>
-                  <p className="mt-1.5 text-[0.95rem]">{reason.body}</p>
+                  <h3 className="h-card">{reason.title}</h3>
+                  <p className="mt-2">{reason.body}</p>
                 </div>
               </li>
             ))}
@@ -428,11 +491,11 @@ export default function Home() {
       {/* 6. What we cannot do --------------------------------------- */}
       <section
         aria-labelledby="limits-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <div className="max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
-            <h2 id="limits-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <div className="card max-w-3xl">
+            <h2 id="limits-heading" className="h-section">
               What we cannot do
             </h2>
             <p className="mt-4">
@@ -440,12 +503,12 @@ export default function Home() {
               a fixed number of points is not being straight with you. Here is
               where our work ends.
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               {limits.map((limit) => (
                 <li key={limit} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                    className="bullet-dot"
                   />
                   <span>{limit}</span>
                 </li>
@@ -461,15 +524,15 @@ export default function Home() {
 
       {/* 7. FAQ ------------------------------------------------------ */}
       <section aria-labelledby="faq-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="faq-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="faq-heading" className="h-section">
             Common questions
           </h2>
 
-          <div className="mt-8 divide-y divide-line border-y border-line">
+          <div className="faq-list mt-6">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-navy-800 marker:content-none">
+              <details key={faq.q} className="faq-item">
+                <summary className="faq-summary">
                   {faq.q}
                   <svg
                     viewBox="0 0 24 24"
@@ -479,12 +542,12 @@ export default function Home() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-brand-green transition-transform group-open:rotate-45"
+                    className="faq-chevron"
                   >
-                    <path d="M12 5v14M5 12h14" />
+                    <path d="m6 9 6 6 6-6" />
                   </svg>
                 </summary>
-                <p className="pb-4 text-[0.95rem]">{faq.a}</p>
+                <p className="faq-answer">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -493,7 +556,7 @@ export default function Home() {
             Still unsure?{" "}
             <Link
               href="/faq"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               Read all questions
             </Link>{" "}
@@ -505,33 +568,33 @@ export default function Home() {
       {/* 8. Final CTA ------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Send us your report. We will tell you what is wrong.
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             The first analysis is free and there is no obligation after it. If we
             find nothing worth disputing, we will say so.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={closingWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Chat on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

@@ -189,15 +189,15 @@ export default function ContactPage() {
   return (
     <>
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             Contact
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             Contact {siteConfig.name}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             Talk to a real person, not a chatbot. Message us on WhatsApp, ring us,
             or send an email — whichever suits you. {siteConfig.contactPerson} and
             the team read every message themselves, and you will get a straight
@@ -208,22 +208,22 @@ export default function ContactPage() {
 
       {/* 2. Contact methods ------------------------------------------ */}
       <section aria-labelledby="methods-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="methods-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="methods-heading" className="h-section">
             How to reach us
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             Three ways, all of them going to the same people. WhatsApp is the
             fastest, and it is the easiest way to send your report.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-5 lg:grid-cols-3">
+          <ul className="mt-7 grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5">
             {/* WhatsApp */}
             <li className="flex flex-col rounded-xl border border-brand-green bg-white p-6 ring-1 ring-brand-green">
-              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-green-light text-brand-green">
+              <span className="icon-tile icon-tile-lg">
                 <WhatsappIcon className="h-6 w-6" />
               </span>
-              <h3 className="mt-4 text-lg font-semibold">WhatsApp</h3>
+              <h3 className="mt-5 h-card">WhatsApp</h3>
               <p className="mt-2 grow text-[0.95rem]">
                 The fastest way to reach us, and the simplest way to send your
                 credit report — attach the PDF and we will read it. Best if you
@@ -236,7 +236,7 @@ export default function ContactPage() {
                 href={pageWhatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+                className="btn btn-primary mt-5"
               >
                 <WhatsappIcon />
                 Message on WhatsApp
@@ -245,10 +245,10 @@ export default function ContactPage() {
 
             {/* Phone */}
             <li className="flex flex-col rounded-xl border border-line bg-white p-6">
-              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-green-light text-brand-green">
+              <span className="icon-tile icon-tile-lg">
                 <PhoneIcon className="h-6 w-6" />
               </span>
-              <h3 className="mt-4 text-lg font-semibold">Phone</h3>
+              <h3 className="mt-5 h-card">Phone</h3>
               <p className="mt-2 grow text-[0.95rem]">
                 Speak to someone directly. Best when the situation is
                 complicated, or when you would simply rather explain it out loud
@@ -262,7 +262,7 @@ export default function ContactPage() {
               </a>
               <a
                 href={telHref}
-                className="mt-4 inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-navy-800 px-6 text-base font-semibold text-white shadow-sm hover:bg-navy-700"
+                className="btn btn-navy mt-5"
               >
                 <PhoneIcon />
                 Call now
@@ -271,10 +271,10 @@ export default function ContactPage() {
 
             {/* Email */}
             <li className="flex flex-col rounded-xl border border-line bg-white p-6">
-              <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-green-light text-brand-green">
+              <span className="icon-tile icon-tile-lg">
                 <EmailIcon className="h-6 w-6" />
               </span>
-              <h3 className="mt-4 text-lg font-semibold">Email</h3>
+              <h3 className="mt-5 h-card">Email</h3>
               <p className="mt-2 grow text-[0.95rem]">
                 Best for documents and longer, detailed questions — anything you
                 want written down and kept, or a set of files too large to send
@@ -288,7 +288,7 @@ export default function ContactPage() {
               </a>
               <a
                 href={mailtoHref}
-                className="mt-4 inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-navy-800 px-6 text-base font-semibold text-white shadow-sm hover:bg-navy-700"
+                className="btn btn-navy mt-5"
               >
                 <EmailIcon />
                 Send an email
@@ -301,18 +301,18 @@ export default function ContactPage() {
       {/* 3. Where we are --------------------------------------------- */}
       <section
         aria-labelledby="where-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <div className="max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
+        <Container reveal className="section">
+          <div className="card max-w-3xl">
             <div className="flex gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-green-light text-brand-green">
+              <span className="icon-tile icon-tile-lg">
                 <LocationIcon />
               </span>
               <div>
                 <h2
                   id="where-heading"
-                  className="text-2xl font-bold sm:text-3xl"
+                  className="h-section"
                 >
                   Where we are
                 </h2>
@@ -344,16 +344,16 @@ export default function ContactPage() {
 
       {/* 4. When we are available ------------------------------------ */}
       <section aria-labelledby="hours-heading">
-        <Container className="py-14 sm:py-16">
-          <div className="max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
+        <Container reveal className="section">
+          <div className="card max-w-3xl">
             <div className="flex gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-green-light text-brand-green">
+              <span className="icon-tile icon-tile-lg">
                 <ClockIcon />
               </span>
               <div>
                 <h2
                   id="hours-heading"
-                  className="text-2xl font-bold sm:text-3xl"
+                  className="h-section"
                 >
                   When we are available
                 </h2>
@@ -367,7 +367,7 @@ export default function ContactPage() {
                   className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-3"
                 >
                   <dt className="font-semibold text-ink">{row.days}</dt>
-                  <dd className="text-[0.95rem]">{row.hours}</dd>
+                  <dd >{row.hours}</dd>
                 </div>
               ))}
             </dl>
@@ -385,40 +385,40 @@ export default function ContactPage() {
       {/* 5. What to send us ------------------------------------------ */}
       <section
         aria-labelledby="send-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="send-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="send-heading" className="h-section">
             What to send us
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             None of this is compulsory — a simple hello is a perfectly good
             start. But if you send these three things in the first message, we
             can usually give you a real answer straight away instead of going
             back and forth.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
             {whatToSend.map((item) => (
               <li
                 key={item.title}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <div className="flex gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-round">
                     <CheckIcon />
                   </span>
                   <div>
                     <h3 className="font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-[0.95rem]">{item.body}</p>
+                    <p className="mt-2">{item.body}</p>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
 
-          <div className="mt-8 max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
-            <h3 className="text-lg font-semibold">
+          <div className="card mt-10 max-w-3xl">
+            <h3 className="h-card">
               We never need passwords or OTPs
             </h3>
             <p className="mt-3">
@@ -434,44 +434,38 @@ export default function ContactPage() {
 
       {/* 6. What happens after you message ---------------------------- */}
       <section aria-labelledby="after-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="after-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="after-heading" className="h-section">
             What happens after you message
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             Three steps, and you can stop after any of them.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <ol className="steps steps-row mt-12">
             {afterYouMessage.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
 
-          <p className="mt-6 max-w-3xl text-[0.95rem]">
+          <p className="mt-5 max-w-3xl">
             Reading your report is free, whatever it turns up — see the{" "}
             <Link
               href="/free-credit-report"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               free credit report check
             </Link>{" "}
             for how that works, and{" "}
             <Link
               href="/pricing"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               pricing
             </Link>{" "}
@@ -483,17 +477,17 @@ export default function ContactPage() {
       {/* 7. FAQ ------------------------------------------------------ */}
       <section
         aria-labelledby="faq-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="faq-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="faq-heading" className="h-section">
             Common questions about contacting us
           </h2>
 
-          <div className="mt-8 divide-y divide-line border-y border-line">
+          <div className="faq-list mt-6">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-navy-800 marker:content-none">
+              <details key={faq.q} className="faq-item">
+                <summary className="faq-summary">
                   {faq.q}
                   <svg
                     viewBox="0 0 24 24"
@@ -503,12 +497,12 @@ export default function ContactPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-brand-green transition-transform group-open:rotate-45"
+                    className="faq-chevron"
                   >
-                    <path d="M12 5v14M5 12h14" />
+                    <path d="m6 9 6 6 6-6" />
                   </svg>
                 </summary>
-                <p className="pb-4 text-[0.95rem]">{faq.a}</p>
+                <p className="faq-answer">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -518,34 +512,34 @@ export default function ContactPage() {
       {/* 8. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Send us a message
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             Tell us what is happening with your report and we will tell you
             whether it is something we can help with. No cost to ask, and no
             obligation afterwards.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Message on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

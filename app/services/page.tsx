@@ -209,15 +209,15 @@ export default function ServicesPage() {
   return (
     <>
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             Our services
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             Credit Report Problems We Fix
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             A low CIBIL score is rarely a mystery. It almost always comes down to
             a handful of specific entries — and a surprising number of them are
             plain errors the bank or the bureau never got around to updating.
@@ -228,8 +228,8 @@ export default function ServicesPage() {
 
       {/* 2. The six services ---------------------------------------- */}
       <section aria-labelledby="services-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="services-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="services-heading" className="h-section">
             The six problems we handle
           </h2>
           <p className="mt-3 max-w-2xl">
@@ -237,18 +237,18 @@ export default function ServicesPage() {
             how long a dispute usually takes.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
-            {services.map((service) => (
-              <li key={service.href}>
-                <Link
-                  href={service.href}
-                  className="flex h-full flex-col rounded-xl border border-line bg-white p-5 hover:border-navy-100 hover:bg-navy-50 sm:p-6"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-green-light text-brand-green">
+          <ul className="mt-7 grid grid-cols-1 gap-4 lg:grid-cols-2">
+            {services.map((service, index) => (
+              <li
+                key={service.href}
+                className={`card card-link ${index === 0 ? "card-feature sm:col-span-2 lg:col-span-1" : ""}`}
+              >
+                <Link href={service.href} className="stretched flex h-full flex-col">
+                  <span className="icon-tile icon-tile-lg">
                     <ServiceIcon name={service.icon} />
                   </span>
-                  <h3 className="mt-4 text-lg font-semibold">{service.title}</h3>
-                  <p className="mt-2 text-[0.95rem]">{service.body}</p>
+                  <h3 className="mt-5 h-card">{service.title}</h3>
+                  <p className="mt-2">{service.body}</p>
                   <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-semibold text-brand-green">
                     Read more
                     <ArrowIcon />
@@ -263,11 +263,11 @@ export default function ServicesPage() {
       {/* 3. Not sure what your problem is ---------------------------- */}
       <section
         aria-labelledby="unsure-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <div className="max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
-            <h2 id="unsure-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <div className="card max-w-3xl">
+            <h2 id="unsure-heading" className="h-section">
               Not sure what your problem is?
             </h2>
             <p className="mt-4">
@@ -282,7 +282,7 @@ export default function ServicesPage() {
                 href={helpWhatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+                className="btn btn-primary"
               >
                 <WhatsappIcon />
                 Send my report on WhatsApp
@@ -294,8 +294,8 @@ export default function ServicesPage() {
 
       {/* 4. How the dispute process works ---------------------------- */}
       <section aria-labelledby="process-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="process-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="process-heading" className="h-section">
             How the dispute process works
           </h2>
           <p className="mt-3 max-w-2xl">
@@ -304,20 +304,14 @@ export default function ServicesPage() {
             and no favour from anyone on the inside.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ol className="steps steps-two mt-12">
             {steps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
@@ -327,23 +321,23 @@ export default function ServicesPage() {
       {/* 5. Honest note ---------------------------------------------- */}
       <section
         aria-labelledby="honest-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <div className="max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
-            <h2 id="honest-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <div className="card max-w-3xl">
+            <h2 id="honest-heading" className="h-section">
               An honest note
             </h2>
             <p className="mt-4">
               This is worth reading before you pick a service, because it is the
               part most people are never told.
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               {honestNotes.map((note) => (
                 <li key={note} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                    className="bullet-dot"
                   />
                   <span>{note}</span>
                 </li>
@@ -360,33 +354,33 @@ export default function ServicesPage() {
       {/* 6. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Tell us what your report says.
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             The first analysis is free. If there is nothing worth disputing, we
             will say so instead of selling you a service.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={closingWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Chat on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

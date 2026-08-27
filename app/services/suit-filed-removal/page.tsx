@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import JumpNav from "@/components/JumpNav";
+import Fold from "@/components/Fold";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
@@ -162,8 +164,8 @@ export default function SuitFiledRemovalPage() {
       />
 
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
+      <section className="hero-navy">
+        <Container className="section-hero">
           <nav aria-label="Breadcrumb" className="text-sm text-navy-100">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
@@ -184,10 +186,10 @@ export default function SuitFiledRemovalPage() {
             </ol>
           </nav>
 
-          <h1 className="mt-5 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-6 h-display text-white">
             Suit Filed in CIBIL Report — How to Remove It
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             Few entries frighten a lender more than the words suit filed. Yet a
             great many of them describe a case that was withdrawn years ago, or a
             matter that never concerned you at all — because banks report the day
@@ -196,19 +198,19 @@ export default function SuitFiledRemovalPage() {
             when it can genuinely be corrected.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Get my report checked free
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}
@@ -217,11 +219,23 @@ export default function SuitFiledRemovalPage() {
         </Container>
       </section>
 
+      <JumpNav
+        items={[
+          { id: "meaning", label: "What does “suit filed” mean?" },
+          { id: "impact", label: "Why it blocks loans" },
+          { id: "wrong", label: "Common reasons it appears wrongly" },
+          { id: "correctable", label: "When it can be corrected — and when it cannot" },
+          { id: "process", label: "How we fix it" },
+          { id: "documents", label: "What you will need" },
+          { id: "faq", label: "Common questions about suit filed entries" },
+        ]}
+      />
+
       {/* 2. What suit filed means ------------------------------------ */}
-      <section aria-labelledby="meaning-heading">
-        <Container className="py-14 sm:py-16">
+      <section id="meaning" className="scroll-anchor" aria-labelledby="meaning-heading">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="meaning-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="meaning-heading" className="h-section">
               What does &ldquo;suit filed&rdquo; mean?
             </h2>
             <p className="mt-4">
@@ -242,11 +256,11 @@ export default function SuitFiledRemovalPage() {
               Two points explain why so many of these entries turn out to be
               wrong:
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               <li className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                  className="bullet-dot"
                 />
                 <span>
                   <strong className="font-semibold text-ink">
@@ -260,7 +274,7 @@ export default function SuitFiledRemovalPage() {
               <li className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                  className="bullet-dot"
                 />
                 <span>
                   <strong className="font-semibold text-ink">
@@ -276,7 +290,7 @@ export default function SuitFiledRemovalPage() {
               It also sits separately from{" "}
               <Link
                 href="/services/written-off-removal"
-                className="font-semibold text-brand-green underline underline-offset-2"
+                className="link-green"
               >
                 written off
               </Link>
@@ -290,12 +304,13 @@ export default function SuitFiledRemovalPage() {
 
       {/* 3. Why it blocks loans -------------------------------------- */}
       <section
+        id="impact"
         aria-labelledby="impact-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="impact-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="impact-heading" className="h-section">
               Why it blocks loans
             </h2>
             <p className="mt-4">
@@ -308,7 +323,7 @@ export default function SuitFiledRemovalPage() {
             <p className="mt-4">
               That is what people run into in practice:
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               {[
                 "Applications rejected outright, whatever your current income and however clean the rest of the report is",
                 "Home loan files stopped at the legal and verification stage rather than at credit assessment",
@@ -319,7 +334,7 @@ export default function SuitFiledRemovalPage() {
                 <li key={item} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                    className="bullet-dot"
                   />
                   <span>{item}</span>
                 </li>
@@ -335,60 +350,70 @@ export default function SuitFiledRemovalPage() {
       </section>
 
       {/* 4. Common reasons it appears wrongly ------------------------ */}
-      <section aria-labelledby="wrong-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="wrong-heading" className="text-2xl font-bold sm:text-3xl">
-            Common reasons it appears wrongly
-          </h2>
-          <p className="mt-3 max-w-3xl">
+      <section id="wrong" className="scroll-anchor" aria-labelledby="wrong-heading">
+        <Container reveal className="section">
+          <Fold
+            summary={
+              <h2 id="wrong-heading" className="h-section">
+                Common reasons it appears wrongly
+              </h2>
+            }
+          >
+          <p className="mt-3 max-w-3xl lede">
             A suit filed tag on a report does not always mean there is a live
             case against you today. These are the situations we see most often.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {wrongReasons.map((item) => (
               <li
                 key={item.title}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <div className="flex gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-round">
                     <CheckIcon />
                   </span>
                   <div>
                     <h3 className="font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-[0.95rem]">{item.body}</p>
+                    <p className="mt-2">{item.body}</p>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
+          </Fold>
         </Container>
       </section>
 
       {/* 5. When it can be corrected --------------------------------- */}
       <section
+        id="correctable"
         aria-labelledby="correctable-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2
-            id="correctable-heading"
-            className="text-2xl font-bold sm:text-3xl"
+        <Container reveal className="section">
+          <Fold
+            summary={
+              <h2
+                id="correctable-heading"
+                className="h-section"
+              >
+                When it can be corrected — and when it cannot
+              </h2>
+            }
           >
-            When it can be corrected — and when it cannot
-          </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             This is the honest part, and the reason we would rather you read this
             page than call an agent who promises anything. A dispute needs a
             factual error: something in the report that no longer matches
             reality, and that a document can prove.
           </p>
 
-          <div className="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
-            <div className="rounded-xl border border-line bg-white p-6 sm:p-8">
-              <h3 className="text-lg font-semibold">It can be corrected when</h3>
-              <ul className="mt-4 space-y-3">
+          <div className="mt-7 grid grid-cols-1 gap-4 lg:grid-cols-2">
+            <div className="card">
+              <h3 className="h-card">It can be corrected when</h3>
+              <ul className="mt-3 space-y-2.5">
                 {[
                   "The case has been closed or fully decided, and the dues that caused it are cleared.",
                   "The case was withdrawn by the lender, usually after a settlement or full payment.",
@@ -397,17 +422,17 @@ export default function SuitFiledRemovalPage() {
                   "No case was ever filed, and the lender cannot produce a case number to support the entry.",
                 ].map((item) => (
                   <li key={item} className="flex gap-3">
-                    <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                    <span className="icon-tile icon-tile-sm icon-round">
                       <CheckIcon />
                     </span>
-                    <span className="text-[0.95rem]">{item}</span>
+                    <span >{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-xl border border-line bg-white p-6 sm:p-8">
-              <h3 className="text-lg font-semibold">
+            <div className="card">
+              <h3 className="h-card">
                 It cannot be removed when
               </h3>
               <p className="mt-4">
@@ -428,99 +453,105 @@ export default function SuitFiledRemovalPage() {
               </p>
             </div>
           </div>
+          </Fold>
         </Container>
       </section>
 
       {/* 6. How we fix it -------------------------------------------- */}
-      <section aria-labelledby="process-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="process-heading" className="text-2xl font-bold sm:text-3xl">
-            How we fix it
-          </h2>
-          <p className="mt-3 max-w-3xl">
+      <section id="process" className="scroll-anchor" aria-labelledby="process-heading">
+        <Container reveal className="section">
+          <Fold
+            summary={
+              <h2 id="process-heading" className="h-section">
+                How we fix it
+              </h2>
+            }
+          >
+          <p className="mt-3 max-w-3xl lede">
             This is the official dispute process every borrower in India is
             entitled to use, under the rules governing credit information
             companies. No shortcut, no contact on the inside, no deletion for a
             fee.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="steps steps-two mt-12">
             {steps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
 
-          <p className="mt-6 max-w-3xl text-[0.95rem]">
+          <p className="mt-5 max-w-3xl">
             One clarification we make early, because it matters: we are not
             lawyers and we do not appear in court. We correct what your credit
             report says. If the case itself needs defending or settling, that is
             work for an advocate, and we will tell you so rather than take money
             for something outside what we do.
           </p>
+          </Fold>
         </Container>
       </section>
 
       {/* 7. What you will need --------------------------------------- */}
       <section
+        id="documents"
         aria-labelledby="documents-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2
-              id="documents-heading"
-              className="text-2xl font-bold sm:text-3xl"
+            <Fold
+              summary={
+                <h2
+                  id="documents-heading"
+                  className="h-section"
+                >
+                  What you will need
+                </h2>
+              }
             >
-              What you will need
-            </h2>
             <p className="mt-4">
               A dispute stands or falls on paperwork. You do not need all of this
               to start a conversation — send what you have and we will tell you
               what else is worth chasing.
             </p>
-            <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
               {documents.map((doc) => (
                 <li key={doc} className="flex gap-2.5">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-tile-sm icon-round">
                     <CheckIcon />
                   </span>
-                  <span className="text-[0.95rem]">{doc}</span>
+                  <span >{doc}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-[0.95rem]">
+            <p className="mt-6">
               No court papers at all? That is common, and not a dead end. Copies
               can usually be obtained from the court record or from the
               lender&rsquo;s legal department, and helping you ask for them is
               part of the job.
             </p>
+            </Fold>
           </div>
         </Container>
       </section>
 
       {/* 8. FAQ ------------------------------------------------------ */}
-      <section aria-labelledby="faq-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="faq-heading" className="text-2xl font-bold sm:text-3xl">
+      <section id="faq" className="scroll-anchor" aria-labelledby="faq-heading">
+        <Container reveal className="section">
+          <h2 id="faq-heading" className="h-section">
             Common questions about suit filed entries
           </h2>
 
-          <div className="mt-8 divide-y divide-line border-y border-line">
+          <div className="faq-list mt-6">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-navy-800 marker:content-none">
+              <details key={faq.q} className="faq-item">
+                <summary className="faq-summary">
                   {faq.q}
                   <svg
                     viewBox="0 0 24 24"
@@ -530,12 +561,12 @@ export default function SuitFiledRemovalPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-brand-green transition-transform group-open:rotate-45"
+                    className="faq-chevron"
                   >
-                    <path d="M12 5v14M5 12h14" />
+                    <path d="m6 9 6 6 6-6" />
                   </svg>
                 </summary>
-                <p className="pb-4 text-[0.95rem]">{faq.a}</p>
+                <p className="faq-answer">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -545,34 +576,34 @@ export default function SuitFiledRemovalPage() {
       {/* 9. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Send your credit report on WhatsApp for a free check
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             We will read the suit filed entry and tell you honestly whether there
             is a genuine error to dispute. If the case is still live, we will say
             that too — no fee, no pressure.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Send my report on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

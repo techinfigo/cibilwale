@@ -115,8 +115,8 @@ export default async function BlogPostPage({
       />
 
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
+      <section className="hero-navy">
+        <Container className="section-hero">
           <nav aria-label="Breadcrumb" className="text-sm text-navy-100">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
@@ -137,7 +137,7 @@ export default async function BlogPostPage({
             </ol>
           </nav>
 
-          <h1 className="mt-5 max-w-3xl text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-6 max-w-3xl h-display text-white">
             {post.title}
           </h1>
           <p className="mt-5 text-sm text-navy-100">
@@ -149,7 +149,7 @@ export default async function BlogPostPage({
 
       {/* 2. Post body ------------------------------------------------ */}
       <section aria-label="Article">
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <article
             className="post-content max-w-3xl"
             dangerouslySetInnerHTML={{ __html: post.contentHtml }}
@@ -158,7 +158,7 @@ export default async function BlogPostPage({
           <p className="mt-10 max-w-3xl text-[0.95rem]">
             <Link
               href="/blog"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               Back to all posts
             </Link>
@@ -169,35 +169,35 @@ export default async function BlogPostPage({
       {/* 3. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Want us to look at your own report?
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             Send it on WhatsApp and we will read it line by line and tell you
             what is wrong, what is accurate, and what can genuinely be disputed.
             Free, with no obligation — and if nothing can be fixed, we will tell
             you that too.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a
               href={postWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Send my report on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

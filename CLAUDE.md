@@ -18,10 +18,58 @@ Location: Agra, Uttar Pradesh (full address TBC)
 
 ## Design
 
-- Colors: deep navy (primary), green (accent/CTA), white background, grey text
+**Direction: Bold and Friendly.** Big confident type, strong colour, generous
+spacing, thumb-friendly on phones. The audience is everyday people in India who
+were refused a loan and are worried about money. It must feel approachable and
+reassuring — never corporate or intimidating.
+
 - Mobile-first. Most users are on cheap Android phones on slow connections.
-- Clean, fast, trustworthy. No heavy animations. No large images.
-- Big tap targets, readable font sizes (min 16px body)
+- Fast above all: no image files anywhere, no heavy libraries. CSS, inline SVG
+  and gradients only.
+- Big tap targets (min 56px on primary actions), body text 17px minimum.
+- Everything must work at 360px width.
+
+### The design system lives in `app/globals.css`
+
+Do not hand-roll one-off styling on a new page. Use these classes so every page
+matches:
+
+| Need | Use |
+| --- | --- |
+| Section padding | `.section`, `.section-hero`, `.section-cta` |
+| Section background | `.band-mint`, `.band-navy`, `.hero-navy` (white/cream is the default) |
+| Headings | `.h-display` (h1), `.h-section` (h2), `.h-sub`, `.h-card` |
+| Intro paragraph | `.lede`; small caps label above a heading: `.eyebrow` |
+| Cards | `.card`, plus `.card-link` when it links, `.card-feature`, `.card-highlight`, `.card-amber` |
+| Whole-card link | `.card-link` on the card + `.stretched` on the anchor |
+| Icons | `.icon-tile` (+ `.icon-tile-sm`/`.icon-tile-lg`, `.icon-round`, `.icon-navy`, `.icon-amber`, `.icon-on-dark`) |
+| Buttons | `.btn` + `.btn-primary` / `.btn-secondary` / `.btn-navy`, plus `.btn-lg` |
+| Numbered steps | `.steps` + `.steps-row` (3–4 steps) or `.steps-two` (5–6), with `.step` and `.step-num` |
+| FAQ accordion | `.faq-list`, `.faq-item`, `.faq-summary`, `.faq-chevron`, `.faq-answer` |
+| Bullets | `.bullet-dot`; inline links: `.link-green`; badges: `.badge .badge-green` |
+
+### Colour
+
+Navy and green are the base. Backgrounds alternate **white/cream → soft green
+tint (`.band-mint`) → navy (`.band-navy`)** down a page, never white and grey.
+Amber (`--color-amber*`) is for highlights and warning panels only. The page
+background is a warm off-white (`--color-cream`), not pure white — cards are
+white so they lift off it.
+
+Never put a bare small grey icon on white. Every icon sits in a coloured tile.
+
+### Motion
+
+Sections fade and rise into view via `<Container reveal>` and the
+`ScrollReveal` component (one IntersectionObserver, no library). Cards and
+buttons lift on hover. All of it is wrapped in `prefers-reduced-motion`, and
+`[data-reveal]` only hides content once the observer is running, so a visitor
+with JS off still sees everything.
+
+### Rules that outrank the visuals
+
+Never promise a score. The hero gauge is decorative and `aria-hidden`; it shows
+direction, never a number we claim to reach.
 
 ## Pages to build
 

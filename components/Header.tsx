@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Container from "./Container";
 import { ctaLink, mainNav } from "@/lib/nav";
 import { siteConfig } from "@/lib/config";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
   // Close the menu whenever the route changes (adjust state during render
@@ -19,17 +20,38 @@ export default function Header() {
     setOpen(false);
   }
 
+  // Drop a shadow once the page has moved, so the bar separates from
+  // the content underneath it.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white">
+    <header
+      className={`sticky top-0 z-40 bg-white/95 backdrop-blur transition-shadow duration-300 ${
+        scrolled
+          ? "border-b border-transparent shadow-[0_6px_24px_-12px_rgba(10,37,64,0.35)]"
+          : "border-b border-line"
+      }`}
+    >
       <Container>
-        <div className="flex h-16 items-center justify-between gap-4">
+        <div className="flex h-20 items-center justify-between gap-4">
           <Link
             href="/"
-            className="text-xl font-bold tracking-tight text-navy-800"
+            className="flex items-center gap-2.5 text-2xl font-extrabold tracking-tight text-navy-800"
           >
+            <span
+              aria-hidden="true"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green-bright to-brand-green-dark text-lg font-extrabold text-white"
+            >
+              C
+            </span>
             {siteConfig.name}
           </Link>
 
@@ -41,19 +63,18 @@ export default function Header() {
                   <Link
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
-                    className={`rounded-md px-3 py-2 text-base font-medium hover:bg-navy-50 hover:text-navy-800 ${
-                      isActive(link.href) ? "text-navy-800" : "text-body"
+                    className={`inline-flex min-h-11 items-center rounded-full px-4 text-[1.0625rem] font-semibold transition-colors hover:bg-mint-50 hover:text-navy-800 ${
+                      isActive(link.href)
+                        ? "bg-mint-50 text-navy-800"
+                        : "text-body"
                     }`}
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <li className="ml-2">
-                <Link
-                  href={ctaLink.href}
-                  className="inline-flex min-h-11 items-center rounded-md bg-brand-green px-4 py-2 text-base font-semibold text-white hover:bg-brand-green-dark"
-                >
+              <li className="ml-3">
+                <Link href={ctaLink.href} className="btn btn-primary">
                   {ctaLink.label}
                 </Link>
               </li>
@@ -67,21 +88,21 @@ export default function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-md border border-line text-navy-800 lg:hidden"
+            className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-white text-navy-800 shadow-sm lg:hidden"
           >
             <span aria-hidden="true" className="relative block h-4 w-6">
               <span
-                className={`absolute left-0 block h-0.5 w-6 bg-current transition-transform ${
+                className={`absolute left-0 block h-0.5 w-6 rounded bg-current transition-transform ${
                   open ? "top-1.5 rotate-45" : "top-0"
                 }`}
               />
               <span
-                className={`absolute top-1.5 left-0 block h-0.5 w-6 bg-current ${
+                className={`absolute top-1.5 left-0 block h-0.5 w-6 rounded bg-current transition-opacity ${
                   open ? "opacity-0" : "opacity-100"
                 }`}
               />
               <span
-                className={`absolute left-0 block h-0.5 w-6 bg-current transition-transform ${
+                className={`absolute left-0 block h-0.5 w-6 rounded bg-current transition-transform ${
                   open ? "top-1.5 -rotate-45" : "top-3"
                 }`}
               />
@@ -98,24 +119,26 @@ export default function Header() {
           className="border-t border-line bg-white lg:hidden"
         >
           <Container>
-            <ul className="flex flex-col py-2">
+            <ul className="flex flex-col py-3">
               {mainNav.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
                     aria-current={isActive(link.href) ? "page" : undefined}
-                    className={`block border-b border-line py-4 text-base font-medium ${
-                      isActive(link.href) ? "text-navy-800" : "text-body"
+                    className={`flex min-h-14 items-center rounded-xl px-4 text-[1.0625rem] font-semibold ${
+                      isActive(link.href)
+                        ? "bg-mint-50 text-navy-800"
+                        : "text-body"
                     }`}
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
-              <li className="py-4">
+              <li className="px-1 pt-3 pb-2">
                 <Link
                   href={ctaLink.href}
-                  className="flex min-h-12 w-full items-center justify-center rounded-md bg-brand-green px-4 text-base font-semibold text-white"
+                  className="btn btn-primary w-full justify-center"
                 >
                   {ctaLink.label}
                 </Link>

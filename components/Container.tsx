@@ -4,12 +4,18 @@ import type { ReactNode } from "react";
 export default function Container({
   children,
   className = "",
+  reveal = false,
 }: {
   children: ReactNode;
   className?: string;
+  /** Fade-and-rise this block when it scrolls into view. */
+  reveal?: boolean;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-5xl px-4 sm:px-6 ${className}`}>
+    <div
+      className={`mx-auto w-full max-w-6xl px-5 sm:px-6 ${className}`}
+      {...(reveal ? { "data-reveal": "" } : {})}
+    >
       {children}
     </div>
   );

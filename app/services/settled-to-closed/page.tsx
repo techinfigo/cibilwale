@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import JumpNav from "@/components/JumpNav";
+import Fold from "@/components/Fold";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
@@ -162,8 +164,8 @@ export default function SettledToClosedPage() {
       />
 
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
+      <section className="hero-navy">
+        <Container className="section-hero">
           <nav aria-label="Breadcrumb" className="text-sm text-navy-100">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
@@ -184,10 +186,10 @@ export default function SettledToClosedPage() {
             </ol>
           </nav>
 
-          <h1 className="mt-5 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-6 h-display text-white">
             Settled Status in CIBIL Report — How to Change It to Closed
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             One word decides how every future lender reads a finished loan.
             Closed says you repaid what you owed. Settled says the bank took a
             loss on you. A great many people who paid every rupee still find
@@ -195,19 +197,19 @@ export default function SettledToClosedPage() {
             corrected, and when it cannot.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Get my report checked free
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}
@@ -216,11 +218,23 @@ export default function SettledToClosedPage() {
         </Container>
       </section>
 
+      <JumpNav
+        items={[
+          { id: "meaning", label: "Settled vs closed: the difference that matters" },
+          { id: "impact", label: "Why it hurts your score and your applications" },
+          { id: "duration", label: "How long does it stay on your report?" },
+          { id: "correctable", label: "When it can be corrected — and when it cannot" },
+          { id: "process", label: "How we fix it" },
+          { id: "documents", label: "What you will need" },
+          { id: "faq", label: "Common questions about settled status" },
+        ]}
+      />
+
       {/* 2. What settled actually means ------------------------------ */}
-      <section aria-labelledby="meaning-heading">
-        <Container className="py-14 sm:py-16">
+      <section id="meaning" className="scroll-anchor" aria-labelledby="meaning-heading">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="meaning-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="meaning-heading" className="h-section">
               Settled vs closed: the difference that matters
             </h2>
             <p className="mt-4">
@@ -229,18 +243,18 @@ export default function SettledToClosedPage() {
               of the agreement; the other says you did not.
             </p>
 
-            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border border-line bg-white p-5">
-                <h3 className="text-lg font-semibold">Closed</h3>
-                <p className="mt-2 text-[0.95rem]">
+            <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="card">
+                <h3 className="h-card">Closed</h3>
+                <p className="mt-2">
                   You repaid the full amount you owed and the account ended
                   cleanly. Nothing was waived, nothing was written away. This is
                   the status you want against every finished loan and card.
                 </p>
               </div>
-              <div className="rounded-xl border border-line bg-white p-5">
-                <h3 className="text-lg font-semibold">Settled</h3>
-                <p className="mt-2 text-[0.95rem]">
+              <div className="card">
+                <h3 className="h-card">Settled</h3>
+                <p className="mt-2">
                   The lender agreed to accept less than the full amount and shut
                   the account. Part of what you owed — interest, penalties,
                   sometimes principal — was written away. Banks call this a
@@ -273,7 +287,7 @@ export default function SettledToClosedPage() {
               them:{" "}
               <Link
                 href="/services/written-off-removal"
-                className="font-semibold text-brand-green underline underline-offset-2"
+                className="link-green"
               >
                 written off
               </Link>{" "}
@@ -287,12 +301,13 @@ export default function SettledToClosedPage() {
 
       {/* 3. Why it hurts --------------------------------------------- */}
       <section
+        id="impact"
         aria-labelledby="impact-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="impact-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="impact-heading" className="h-section">
               Why it hurts your score and your applications
             </h2>
             <p className="mt-4">
@@ -305,7 +320,7 @@ export default function SettledToClosedPage() {
             <p className="mt-4">
               The practical effect is often worse than the number suggests:
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               {[
                 "Loan applications refused, or approved only at a higher interest rate to price in the risk",
                 "Credit card limits kept low, and premium cards declined outright",
@@ -316,7 +331,7 @@ export default function SettledToClosedPage() {
                 <li key={item} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                    className="bullet-dot"
                   />
                   <span>{item}</span>
                 </li>
@@ -332,10 +347,10 @@ export default function SettledToClosedPage() {
       </section>
 
       {/* 4. How long it stays ---------------------------------------- */}
-      <section aria-labelledby="duration-heading">
-        <Container className="py-14 sm:py-16">
+      <section id="duration" className="scroll-anchor" aria-labelledby="duration-heading">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="duration-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="duration-heading" className="h-section">
               How long does it stay on your report?
             </h2>
             <p className="mt-4">
@@ -348,11 +363,11 @@ export default function SettledToClosedPage() {
               Two situations get confused with each other, and the difference
               decides what you should do:
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               <li className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                  className="bullet-dot"
                 />
                 <span>
                   <strong className="font-semibold text-ink">
@@ -366,7 +381,7 @@ export default function SettledToClosedPage() {
               <li className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                  className="bullet-dot"
                 />
                 <span>
                   <strong className="font-semibold text-ink">
@@ -389,17 +404,22 @@ export default function SettledToClosedPage() {
 
       {/* 5. When it can be corrected --------------------------------- */}
       <section
+        id="correctable"
         aria-labelledby="correctable-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2
-            id="correctable-heading"
-            className="text-2xl font-bold sm:text-3xl"
+        <Container reveal className="section">
+          <Fold
+            summary={
+              <h2
+                id="correctable-heading"
+                className="h-section"
+              >
+                When it can be corrected — and when it cannot
+              </h2>
+            }
           >
-            When it can be corrected — and when it cannot
-          </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             This is the honest part, and the reason we would rather you read this
             page than call an agent who promises anything. A dispute needs a
             factual error: something in the report that does not match what
@@ -409,27 +429,27 @@ export default function SettledToClosedPage() {
           <h3 className="mt-8 text-lg font-semibold">
             It can be corrected when:
           </h3>
-          <ul className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
             {canBeCorrected.map((item) => (
               <li
                 key={item.title}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <div className="flex gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-round">
                     <CheckIcon />
                   </span>
                   <div>
                     <h4 className="font-semibold text-ink">{item.title}</h4>
-                    <p className="mt-1.5 text-[0.95rem]">{item.body}</p>
+                    <p className="mt-2">{item.body}</p>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
 
-          <div className="mt-8 max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
-            <h3 className="text-lg font-semibold">
+          <div className="card mt-10 max-w-3xl">
+            <h3 className="h-card">
               It cannot simply be changed when:
             </h3>
             <p className="mt-3">
@@ -449,110 +469,116 @@ export default function SettledToClosedPage() {
               payments reads very differently from one sitting in a damaged file.
             </p>
           </div>
+          </Fold>
         </Container>
       </section>
 
       {/* 6. How we fix it -------------------------------------------- */}
-      <section aria-labelledby="process-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="process-heading" className="text-2xl font-bold sm:text-3xl">
-            How we fix it
-          </h2>
-          <p className="mt-3 max-w-3xl">
+      <section id="process" className="scroll-anchor" aria-labelledby="process-heading">
+        <Container reveal className="section">
+          <Fold
+            summary={
+              <h2 id="process-heading" className="h-section">
+                How we fix it
+              </h2>
+            }
+          >
+          <p className="mt-3 max-w-3xl lede">
             This is the official dispute process every borrower in India is
             entitled to use, under the rules governing credit information
             companies. No shortcut, no contact on the inside, no deletion for a
             fee.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="steps steps-two mt-12">
             {steps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
 
-          <p className="mt-6 max-w-3xl text-[0.95rem]">
+          <p className="mt-5 max-w-3xl">
             Reports often carry more than one problem — a settled status on one
             loan and a{" "}
             <Link
               href="/services/written-off-removal"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               written off tag
             </Link>{" "}
             or wrong{" "}
             <Link
               href="/services/overdue-dpd-correction"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               DPD marks
             </Link>{" "}
             on another. We handle them together rather than charging you twice
             for one round of work.
           </p>
+          </Fold>
         </Container>
       </section>
 
       {/* 7. What you will need --------------------------------------- */}
       <section
+        id="documents"
         aria-labelledby="documents-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2
-              id="documents-heading"
-              className="text-2xl font-bold sm:text-3xl"
+            <Fold
+              summary={
+                <h2
+                  id="documents-heading"
+                  className="h-section"
+                >
+                  What you will need
+                </h2>
+              }
             >
-              What you will need
-            </h2>
             <p className="mt-4">
               A dispute stands or falls on paperwork. You do not need all of this
               to start a conversation — send what you have and we will tell you
               what else is worth chasing.
             </p>
-            <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
               {documents.map((doc) => (
                 <li key={doc} className="flex gap-2.5">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-tile-sm icon-round">
                     <CheckIcon />
                   </span>
-                  <span className="text-[0.95rem]">{doc}</span>
+                  <span >{doc}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-[0.95rem]">
+            <p className="mt-6">
               The NOC matters most here, because it is the lender&rsquo;s own
               record of what was paid. Lost it? A fresh copy can usually still be
               obtained, and helping you ask for it is part of the job.
             </p>
+            </Fold>
           </div>
         </Container>
       </section>
 
       {/* 8. FAQ ------------------------------------------------------ */}
-      <section aria-labelledby="faq-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="faq-heading" className="text-2xl font-bold sm:text-3xl">
+      <section id="faq" className="scroll-anchor" aria-labelledby="faq-heading">
+        <Container reveal className="section">
+          <h2 id="faq-heading" className="h-section">
             Common questions about settled status
           </h2>
 
-          <div className="mt-8 divide-y divide-line border-y border-line">
+          <div className="faq-list mt-6">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-navy-800 marker:content-none">
+              <details key={faq.q} className="faq-item">
+                <summary className="faq-summary">
                   {faq.q}
                   <svg
                     viewBox="0 0 24 24"
@@ -562,12 +588,12 @@ export default function SettledToClosedPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-brand-green transition-transform group-open:rotate-45"
+                    className="faq-chevron"
                   >
-                    <path d="M12 5v14M5 12h14" />
+                    <path d="m6 9 6 6 6-6" />
                   </svg>
                 </summary>
-                <p className="pb-4 text-[0.95rem]">{faq.a}</p>
+                <p className="faq-answer">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -577,34 +603,34 @@ export default function SettledToClosedPage() {
       {/* 9. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Send your credit report on WhatsApp for a free check
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             We will compare the settled entry against what you actually paid and
             tell you honestly whether there is a genuine error to dispute. If the
             status is correct, we will say so — no fee, no pressure.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Send my report on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

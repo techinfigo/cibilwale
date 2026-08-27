@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
+import ScrollReveal from "@/components/ScrollReveal";
 import { siteConfig } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -117,6 +118,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <FloatingButtons />
+        <ScrollReveal />
       </body>
     </html>
   );

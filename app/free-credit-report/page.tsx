@@ -196,15 +196,15 @@ export default function FreeCreditReportPage() {
   return (
     <>
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             Free check
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             Free Credit Report Check
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             Send us your credit report on WhatsApp and we will tell you exactly
             what is wrong with it — which entries are pulling your score down,
             which ones look like genuine errors, and what can be disputed. It is
@@ -212,19 +212,19 @@ export default function FreeCreditReportPage() {
             if that answer is that nothing can be fixed.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={sendReportWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-16 items-center justify-center gap-3 rounded-lg bg-brand-green px-8 text-lg font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary btn-lg"
             >
               <WhatsappIcon className="h-6 w-6" />
               Send my report on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-16 items-center justify-center gap-3 rounded-lg bg-white px-8 text-lg font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary btn-lg"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}
@@ -239,28 +239,28 @@ export default function FreeCreditReportPage() {
 
       {/* 2. What you get --------------------------------------------- */}
       <section aria-labelledby="get-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="get-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="get-heading" className="h-section">
             What you get
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             Four things back, all of them free, and the last one before you have
             spent anything.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {whatYouGet.map((item) => (
               <li
                 key={item.title}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <div className="flex gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-round">
                     <CheckIcon />
                   </span>
                   <div>
                     <h3 className="font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-[0.95rem]">{item.body}</p>
+                    <p className="mt-2">{item.body}</p>
                   </div>
                 </div>
               </li>
@@ -272,38 +272,32 @@ export default function FreeCreditReportPage() {
       {/* 3. How to get your credit report ----------------------------- */}
       <section
         aria-labelledby="download-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="download-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="download-heading" className="h-section">
             How to get your credit report
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             You are entitled to your own credit information, and you can get it
             straight from the bureau without going through anybody else. It takes
             about ten minutes. Download it yourself so the original stays in your
             hands and nobody ever touches your login.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="steps steps-two mt-12">
             {downloadSteps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
 
-          <h3 className="mt-10 text-lg font-semibold">
+          <h3 className="mt-8 text-lg font-semibold">
             You can use any of the four bureaus
           </h3>
           <p className="mt-3 max-w-3xl text-[0.95rem]">
@@ -314,14 +308,14 @@ export default function FreeCreditReportPage() {
             all.
           </p>
 
-          <ul className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-5">
             {bureaus.map((bureau) => (
               <li
                 key={bureau.name}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <h4 className="font-semibold text-ink">{bureau.name}</h4>
-                <p className="mt-1.5 text-[0.95rem]">{bureau.body}</p>
+                <p className="mt-2">{bureau.body}</p>
               </li>
             ))}
           </ul>
@@ -330,16 +324,16 @@ export default function FreeCreditReportPage() {
 
       {/* 4. Security warning ----------------------------------------- */}
       <section aria-labelledby="security-heading">
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="rounded-xl border-2 border-navy-800 bg-navy-50 p-6 sm:p-8">
             <div className="flex gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-navy-800 text-white">
+              <span className="icon-tile icon-tile-lg btn-navy">
                 <AlertIcon />
               </span>
               <div>
                 <h2
                   id="security-heading"
-                  className="text-2xl font-bold sm:text-3xl"
+                  className="h-section"
                 >
                   We will never ask for a password or an OTP
                 </h2>
@@ -350,12 +344,12 @@ export default function FreeCreditReportPage() {
               </div>
             </div>
 
-            <ul className="mt-6 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               {securityPoints.map((point) => (
                 <li key={point} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                    className="bullet-dot"
                   />
                   <span>{point}</span>
                 </li>
@@ -376,11 +370,11 @@ export default function FreeCreditReportPage() {
       {/* 5. Do not have your report ---------------------------------- */}
       <section
         aria-labelledby="nohave-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="nohave-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="nohave-heading" className="h-section">
               Do not have your report?
             </h2>
             <p className="mt-4">
@@ -400,7 +394,7 @@ export default function FreeCreditReportPage() {
                 href={helpDownloadWhatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+                className="btn btn-primary"
               >
                 <WhatsappIcon />
                 Help me download my report
@@ -412,44 +406,38 @@ export default function FreeCreditReportPage() {
 
       {/* 6. What happens next ---------------------------------------- */}
       <section aria-labelledby="next-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="next-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="next-heading" className="h-section">
             What happens next
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             Three steps, and you can stop after any of them.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <ol className="steps steps-row mt-12">
             {nextSteps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
 
-          <p className="mt-6 max-w-3xl text-[0.95rem]">
+          <p className="mt-5 max-w-3xl">
             If there is something to fix, the work usually falls into one of the{" "}
             <Link
               href="/services"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               services we handle
             </Link>
             , and what each costs is set out on our{" "}
             <Link
               href="/pricing"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               pricing page
             </Link>
@@ -461,11 +449,11 @@ export default function FreeCreditReportPage() {
       {/* 7. Why we do this free -------------------------------------- */}
       <section
         aria-labelledby="why-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="why-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="why-heading" className="h-section">
               Why we do this free
             </h2>
             <p className="mt-4">
@@ -498,15 +486,15 @@ export default function FreeCreditReportPage() {
 
       {/* 8. FAQ ------------------------------------------------------ */}
       <section aria-labelledby="faq-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="faq-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="faq-heading" className="h-section">
             Common questions about the free check
           </h2>
 
-          <div className="mt-8 divide-y divide-line border-y border-line">
+          <div className="faq-list mt-6">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-navy-800 marker:content-none">
+              <details key={faq.q} className="faq-item">
+                <summary className="faq-summary">
                   {faq.q}
                   <svg
                     viewBox="0 0 24 24"
@@ -516,12 +504,12 @@ export default function FreeCreditReportPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-brand-green transition-transform group-open:rotate-45"
+                    className="faq-chevron"
                   >
-                    <path d="M12 5v14M5 12h14" />
+                    <path d="m6 9 6 6 6-6" />
                   </svg>
                 </summary>
-                <p className="pb-4 text-[0.95rem]">{faq.a}</p>
+                <p className="faq-answer">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -531,34 +519,34 @@ export default function FreeCreditReportPage() {
       {/* 9. Final CTA ------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Send your report now and find out where you stand
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             One message, one PDF, and a straight answer back. Nothing to pay and
             nothing to sign up for — and if there is nothing wrong with your
             report, we will tell you that too.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={sendReportWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-16 items-center justify-center gap-3 rounded-lg bg-brand-green px-8 text-lg font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary btn-lg"
             >
               <WhatsappIcon className="h-6 w-6" />
               Send my report on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-16 items-center justify-center gap-3 rounded-lg bg-white px-8 text-lg font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary btn-lg"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

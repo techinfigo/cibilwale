@@ -213,34 +213,34 @@ export default function PricingPage() {
   return (
     <>
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             Pricing
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             Simple, Fixed Pricing
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             You know the price before we start, and it does not change later.
             There are no hidden charges, no monthly fee and no cut of your loan
             amount. The first check — reading your report and telling you what is
             wrong with it — costs nothing at all.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Ask about pricing
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}
@@ -251,51 +251,51 @@ export default function PricingPage() {
 
       {/* 2. Pricing cards -------------------------------------------- */}
       <section aria-labelledby="plans-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="plans-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="plans-heading" className="h-section">
             Our plans
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             Pick the one that sounds like your situation, or send the report
             first and let us tell you which fits. If you are not sure how many
             problems your report has, start with the free reading — that is what
             it is for.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {plans.map((plan) => (
               <li
                 key={plan.name}
-                className={`flex flex-col rounded-xl border bg-white p-6 ${
+                className={`card ${
                   plan.highlight
-                    ? "border-brand-green ring-1 ring-brand-green"
-                    : "border-line"
+                    ? "card-highlight lg:scale-[1.035]"
+                    : ""
                 }`}
               >
                 {plan.badge ? (
-                  <p className="mb-3 inline-flex w-fit rounded-full bg-brand-green-light px-3 py-1 text-xs font-bold tracking-wide text-brand-green uppercase">
-                    {plan.badge}
-                  </p>
+                  <p className="badge badge-green mb-4 w-fit">{plan.badge}</p>
                 ) : null}
 
-                <h3 className="text-lg font-semibold">{plan.name}</h3>
+                <h3 className="h-sub">{plan.name}</h3>
 
-                <p className="mt-3 text-3xl font-bold text-navy-800">
+                <p className="mt-4 text-5xl font-extrabold tracking-tight text-navy-800">
                   {plan.price}
                 </p>
                 {plan.priceNote ? (
-                  <p className="mt-1 text-sm text-muted">{plan.priceNote}</p>
+                  <p className="mt-2 text-sm font-semibold text-muted">
+                    {plan.priceNote}
+                  </p>
                 ) : null}
 
-                <p className="mt-4 text-[0.95rem]">{plan.summary}</p>
+                <p className="mt-5">{plan.summary}</p>
 
-                <ul className="mt-5 grow space-y-3">
+                <ul className="mt-4 grow space-y-2.5">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex gap-2.5">
-                      <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                      <span className="icon-tile icon-tile-sm icon-round">
                         <CheckIcon />
                       </span>
-                      <span className="text-[0.95rem]">{feature}</span>
+                      <span >{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -304,7 +304,7 @@ export default function PricingPage() {
                   href={whatsappHref(plan.ctaMessage)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-7 inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+                  className="btn btn-primary mt-8"
                 >
                   <WhatsappIcon />
                   {plan.ctaLabel}
@@ -313,7 +313,7 @@ export default function PricingPage() {
             ))}
           </ul>
 
-          <p className="mt-6 max-w-3xl text-[0.95rem]">
+          <p className="mt-5 max-w-3xl">
             Prices are for the correction work itself. Where a bureau charges for
             a report copy, or a document has to be couriered, we tell you the
             amount before it is spent.
@@ -324,30 +324,30 @@ export default function PricingPage() {
       {/* 3. What is included in every plan ---------------------------- */}
       <section
         aria-labelledby="included-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="included-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="included-heading" className="h-section">
             What is included in every plan
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             These are not extras and they are not charged separately. They come
             with any paid plan, whichever one you take.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
             {included.map((item) => (
               <li
                 key={item.title}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <div className="flex gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-round">
                     <CheckIcon />
                   </span>
                   <div>
                     <h3 className="font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-[0.95rem]">{item.body}</p>
+                    <p className="mt-2">{item.body}</p>
                   </div>
                 </div>
               </li>
@@ -358,9 +358,9 @@ export default function PricingPage() {
 
       {/* 4. What we do not charge for -------------------------------- */}
       <section aria-labelledby="free-heading">
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="free-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="free-heading" className="h-section">
               What we do not charge for
             </h2>
             <p className="mt-4">
@@ -368,17 +368,17 @@ export default function PricingPage() {
               anything. That is how it is supposed to work — you should not have
               to pay to find out whether you have a problem worth fixing.
             </p>
-            <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
               {notCharged.map((item) => (
                 <li key={item} className="flex gap-2.5">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-tile-sm icon-round">
                     <CheckIcon />
                   </span>
-                  <span className="text-[0.95rem]">{item}</span>
+                  <span >{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-[0.95rem]">
+            <p className="mt-6">
               If the honest answer is that your report is accurate and there is
               nothing to dispute, you will hear that from us for free — and you
               will have saved the fee you were about to spend.
@@ -390,11 +390,11 @@ export default function PricingPage() {
       {/* 5. No hidden charges ---------------------------------------- */}
       <section
         aria-labelledby="hidden-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="hidden-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="hidden-heading" className="h-section">
               No hidden charges
             </h2>
             <p className="mt-4">
@@ -402,11 +402,11 @@ export default function PricingPage() {
               added at the end, and nothing appears on your bill that you were
               not told about first.
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               <li className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                  className="bullet-dot"
                 />
                 <span>
                   <strong className="font-semibold text-ink">
@@ -419,7 +419,7 @@ export default function PricingPage() {
               <li className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                  className="bullet-dot"
                 />
                 <span>
                   <strong className="font-semibold text-ink">
@@ -432,7 +432,7 @@ export default function PricingPage() {
               <li className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                  className="bullet-dot"
                 />
                 <span>
                   <strong className="font-semibold text-ink">
@@ -446,7 +446,7 @@ export default function PricingPage() {
               <li className="flex gap-3">
                 <span
                   aria-hidden="true"
-                  className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                  className="bullet-dot"
                 />
                 <span>
                   <strong className="font-semibold text-ink">
@@ -463,9 +463,9 @@ export default function PricingPage() {
 
       {/* 6. Why we are not the cheapest or the most expensive --------- */}
       <section aria-labelledby="position-heading">
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="position-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="position-heading" className="h-section">
               Why we are not the cheapest, or the most expensive
             </h2>
             <p className="mt-4">
@@ -497,11 +497,11 @@ export default function PricingPage() {
       {/* 7. Honest note ---------------------------------------------- */}
       <section
         aria-labelledby="honest-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <div className="max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
-            <h2 id="honest-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <div className="card max-w-3xl">
+            <h2 id="honest-heading" className="h-section">
               An honest note before you pay anyone
             </h2>
             <p className="mt-4">
@@ -531,15 +531,15 @@ export default function PricingPage() {
 
       {/* 8. FAQ ------------------------------------------------------ */}
       <section aria-labelledby="faq-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="faq-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="faq-heading" className="h-section">
             Common questions about pricing
           </h2>
 
-          <div className="mt-8 divide-y divide-line border-y border-line">
+          <div className="faq-list mt-6">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-navy-800 marker:content-none">
+              <details key={faq.q} className="faq-item">
+                <summary className="faq-summary">
                   {faq.q}
                   <svg
                     viewBox="0 0 24 24"
@@ -549,12 +549,12 @@ export default function PricingPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-brand-green transition-transform group-open:rotate-45"
+                    className="faq-chevron"
                   >
-                    <path d="M12 5v14M5 12h14" />
+                    <path d="m6 9 6 6 6-6" />
                   </svg>
                 </summary>
-                <p className="pb-4 text-[0.95rem]">{faq.a}</p>
+                <p className="faq-answer">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -564,34 +564,34 @@ export default function PricingPage() {
       {/* 9. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Not sure which plan you need?
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             Send the report first. We will read it free, tell you what is wrong,
             and only then talk about what it would cost to fix — if it can be
             fixed at all.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Message us on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

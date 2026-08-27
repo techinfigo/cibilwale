@@ -65,15 +65,15 @@ export default function BlogIndexPage() {
   return (
     <>
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             Blog
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             Credit reports, explained in plain English
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             Guides for people who have been refused a loan and told very little
             about why. What the words on your report mean, what can genuinely be
             corrected, and what nobody can do for you — written without jargon
@@ -84,7 +84,7 @@ export default function BlogIndexPage() {
 
       {/* 2. Posts ---------------------------------------------------- */}
       <section aria-labelledby="posts-heading">
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <h2 id="posts-heading" className="sr-only">
             All posts
           </h2>
@@ -99,7 +99,7 @@ export default function BlogIndexPage() {
               {posts.map((post) => (
                 <li
                   key={post.slug}
-                  className="rounded-xl border border-line bg-white p-6 sm:p-8"
+                  className="card card-link"
                 >
                   <article>
                     <p className="text-sm text-muted">
@@ -110,7 +110,7 @@ export default function BlogIndexPage() {
                     <h3 className="mt-2 text-xl font-bold sm:text-2xl">
                       <Link
                         href={`/blog/${post.slug}`}
-                        className="hover:underline"
+                        className="stretched hover:underline"
                       >
                         {post.title}
                       </Link>
@@ -135,34 +135,34 @@ export default function BlogIndexPage() {
       {/* 3. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Rather have us just read your report?
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             Send it on WhatsApp and we will tell you what is on it, what is
             wrong, and what can genuinely be disputed. Free, and no obligation
             afterwards.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Send my report on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

@@ -30,15 +30,15 @@ export default function LegalPage({
   return (
     <>
       {/* Hero ------------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             Legal
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             {title}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">{intro}</p>
+          <p className="mt-6 lede max-w-2xl text-navy-100">{intro}</p>
           <p className="mt-6 text-sm text-navy-100">
             Last updated: {lastUpdated}
           </p>
@@ -50,11 +50,11 @@ export default function LegalPage({
         <h2 id="terms-body-heading" className="sr-only">
           {title} in full
         </h2>
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
             {sections.map((section, index) => (
               <div key={section.heading} className={index === 0 ? "" : "mt-10"}>
-                <h3 className="text-xl font-bold sm:text-2xl">
+                <h3 className="h-sub">
                   {index + 1}. {section.heading}
                 </h3>
 
@@ -65,12 +65,12 @@ export default function LegalPage({
                 ))}
 
                 {section.list ? (
-                  <ul className="mt-4 space-y-3">
+                  <ul className="mt-3 space-y-2.5">
                     {section.list.map((item) => (
                       <li key={item} className="flex gap-3">
                         <span
                           aria-hidden="true"
-                          className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                          className="bullet-dot"
                         />
                         <span>{item}</span>
                       </li>
@@ -86,13 +86,13 @@ export default function LegalPage({
       {/* Contact ---------------------------------------------------- */}
       <section
         aria-labelledby="legal-contact-heading"
-        className="border-t border-line"
+        className="band-mint"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <div className="max-w-3xl">
             <h2
               id="legal-contact-heading"
-              className="text-xl font-bold sm:text-2xl"
+              className="h-sub"
             >
               Questions about this page?
             </h2>
@@ -101,12 +101,12 @@ export default function LegalPage({
               you decide to work with us, ask. We would rather answer the
               question than have you agree to something you have not understood.
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               <li className="flex flex-wrap gap-x-2">
                 <span className="font-semibold text-ink">Contact page:</span>
                 <Link
                   href="/contact"
-                  className="font-semibold text-brand-green underline underline-offset-2"
+                  className="link-green"
                 >
                   All the ways to reach us
                 </Link>
@@ -115,7 +115,7 @@ export default function LegalPage({
                 <span className="font-semibold text-ink">Phone:</span>
                 <a
                   href={telHref}
-                  className="font-semibold text-brand-green underline underline-offset-2"
+                  className="link-green"
                 >
                   {siteConfig.phoneDisplay}
                 </a>

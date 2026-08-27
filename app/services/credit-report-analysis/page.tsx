@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import JumpNav from "@/components/JumpNav";
+import Fold from "@/components/Fold";
 import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
@@ -220,8 +222,8 @@ export default function CreditReportAnalysisPage() {
       />
 
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
+      <section className="hero-navy">
+        <Container className="section-hero">
           <nav aria-label="Breadcrumb" className="text-sm text-navy-100">
             <ol className="flex flex-wrap items-center gap-2">
               <li>
@@ -242,10 +244,10 @@ export default function CreditReportAnalysisPage() {
             </ol>
           </nav>
 
-          <h1 className="mt-5 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-6 h-display text-white">
             Credit Report Analysis — Find Out Why Your CIBIL Score Is Low
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             A bank said no and nobody explained why. The score is low, and the
             report is page after page of codes and column headings. Before you
             can fix anything you have to know what is actually wrong — so we read
@@ -253,19 +255,19 @@ export default function CreditReportAnalysisPage() {
             found. The first reading is free.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Get my report read free
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}
@@ -274,13 +276,26 @@ export default function CreditReportAnalysisPage() {
         </Container>
       </section>
 
+      <JumpNav
+        items={[
+          { id: "unreadable", label: "Why most people cannot read their own report" },
+          { id: "check", label: "What we actually check" },
+          { id: "findings", label: "What the analysis tells you" },
+          { id: "bureaus", label: "You have four credit reports, not one" },
+          { id: "obtain", label: "How to get your report" },
+          { id: "process", label: "How the free check works" },
+          { id: "documents", label: "What you will need" },
+          { id: "faq", label: "Common questions about report analysis" },
+        ]}
+      />
+
       {/* 2. Why most people cannot read their own report -------------- */}
-      <section aria-labelledby="unreadable-heading">
-        <Container className="py-14 sm:py-16">
+      <section id="unreadable" className="scroll-anchor" aria-labelledby="unreadable-heading">
+        <Container reveal className="section">
           <div className="max-w-3xl">
             <h2
               id="unreadable-heading"
-              className="text-2xl font-bold sm:text-3xl"
+              className="h-section"
             >
               Why most people cannot read their own report
             </h2>
@@ -312,141 +327,153 @@ export default function CreditReportAnalysisPage() {
 
       {/* 3. What we actually check ----------------------------------- */}
       <section
+        id="check"
         aria-labelledby="check-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="check-heading" className="text-2xl font-bold sm:text-3xl">
-            What we actually check
-          </h2>
-          <p className="mt-3 max-w-3xl">
+        <Container reveal className="section">
+          <Fold
+            summary={
+              <h2 id="check-heading" className="h-section">
+                What we actually check
+              </h2>
+            }
+          >
+          <p className="mt-3 max-w-3xl lede">
             Every section of the report, in order, including the ones people skip
             entirely. Here is what each part holds and what tends to go wrong in
             it.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {reportParts.map((part) => (
               <li
                 key={part.title}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <div className="flex gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-round">
                     <CheckIcon />
                   </span>
                   <div>
                     <h3 className="font-semibold text-ink">{part.title}</h3>
-                    <p className="mt-1.5 text-[0.95rem]">{part.body}</p>
+                    <p className="mt-2">{part.body}</p>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
+          </Fold>
         </Container>
       </section>
 
       {/* 4. What the analysis tells you ------------------------------- */}
-      <section aria-labelledby="findings-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="findings-heading" className="text-2xl font-bold sm:text-3xl">
-            What the analysis tells you
-          </h2>
-          <p className="mt-3 max-w-3xl">
+      <section id="findings" className="scroll-anchor" aria-labelledby="findings-heading">
+        <Container reveal className="section">
+          <Fold
+            summary={
+              <h2 id="findings-heading" className="h-section">
+                What the analysis tells you
+              </h2>
+            }
+          >
+          <p className="mt-3 max-w-3xl lede">
             You get four things back, and the last one matters as much as the
             first.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {findings.map((item) => (
               <li
                 key={item.title}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <div className="flex gap-3">
-                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-round">
                     <CheckIcon />
                   </span>
                   <div>
                     <h3 className="font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-[0.95rem]">{item.body}</p>
+                    <p className="mt-2">{item.body}</p>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
 
-          <p className="mt-6 max-w-3xl text-[0.95rem]">
+          <p className="mt-5 max-w-3xl">
             Where the reading does turn up something disputable, it usually falls
             into one of the areas we handle:{" "}
             <Link
               href="/services/written-off-removal"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               written off
             </Link>
             ,{" "}
             <Link
               href="/services/suit-filed-removal"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               suit filed
             </Link>
             , a wrong{" "}
             <Link
               href="/services/settled-to-closed"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               settled status
             </Link>
             , incorrect{" "}
             <Link
               href="/services/overdue-dpd-correction"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               DPD marks
             </Link>{" "}
             or an{" "}
             <Link
               href="/services/account-mismatch-correction"
-              className="font-semibold text-brand-green underline underline-offset-2"
+              className="link-green"
             >
               account that is not yours
             </Link>
             . We would rather find one real error than invent five.
           </p>
+          </Fold>
         </Container>
       </section>
 
       {/* 5. Four reports, not one ------------------------------------ */}
       <section
+        id="bureaus"
         aria-labelledby="bureaus-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="bureaus-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="bureaus-heading" className="h-section">
             You have four credit reports, not one
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             This surprises almost everyone. India has four licensed credit
             bureaus, and each keeps its own separate file on you, built from
             whatever the lenders chose to send it. They are rarely identical.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {bureaus.map((bureau) => (
               <li
                 key={bureau.name}
-                className="rounded-xl border border-line bg-white p-5"
+                className="card"
               >
                 <h3 className="font-semibold text-ink">{bureau.name}</h3>
-                <p className="mt-1.5 text-[0.95rem]">{bureau.body}</p>
+                <p className="mt-2">{bureau.body}</p>
               </li>
             ))}
           </ul>
 
-          <div className="mt-8 max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
-            <h3 className="text-lg font-semibold">Why this matters to you</h3>
+          <div className="card mt-10 max-w-3xl">
+            <h3 className="h-card">Why this matters to you</h3>
             <p className="mt-3">
               A lender may check any one of the four, and you do not get to
               choose which. An account can appear on one report and not another,
@@ -470,12 +497,16 @@ export default function CreditReportAnalysisPage() {
       </section>
 
       {/* 6. How to get your report ----------------------------------- */}
-      <section aria-labelledby="obtain-heading">
-        <Container className="py-14 sm:py-16">
+      <section id="obtain" className="scroll-anchor" aria-labelledby="obtain-heading">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="obtain-heading" className="text-2xl font-bold sm:text-3xl">
-              How to get your report
-            </h2>
+            <Fold
+              summary={
+                <h2 id="obtain-heading" className="h-section">
+                  How to get your report
+                </h2>
+              }
+            >
             <p className="mt-4">
               You are entitled to your own credit information, and you can get it
               from each bureau directly through its own website. The bureaus are
@@ -492,15 +523,16 @@ export default function CreditReportAnalysisPage() {
               yourself means the original stays in your hands and nobody else
               ever touches your login.
             </p>
+            </Fold>
           </div>
 
-          <div className="mt-8 max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
+          <div className="card mt-10 max-w-3xl">
             <div className="flex gap-4">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-green-light text-brand-green">
+              <span className="icon-tile icon-tile-lg">
                 <ShieldIcon />
               </span>
               <div>
-                <h3 className="text-lg font-semibold">
+                <h3 className="h-card">
                   We never need your passwords or OTPs
                 </h3>
                 <p className="mt-3">
@@ -509,7 +541,7 @@ export default function CreditReportAnalysisPage() {
               </div>
             </div>
 
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               {[
                 "We will never ask for your net banking password, your card PIN, your UPI PIN or any OTP. No step in this work requires one.",
                 "Nobody legitimate needs them — not us, not a bureau, not your bank on a phone call. Anyone asking is trying to get into your account, whoever they claim to be.",
@@ -520,7 +552,7 @@ export default function CreditReportAnalysisPage() {
                 <li key={item} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                    className="bullet-dot"
                   />
                   <span>{item}</span>
                 </li>
@@ -532,94 +564,100 @@ export default function CreditReportAnalysisPage() {
 
       {/* 7. How the free check works --------------------------------- */}
       <section
+        id="process"
         aria-labelledby="process-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="process-heading" className="text-2xl font-bold sm:text-3xl">
-            How the free check works
-          </h2>
-          <p className="mt-3 max-w-3xl">
+        <Container reveal className="section">
+          <Fold
+            summary={
+              <h2 id="process-heading" className="h-section">
+                How the free check works
+              </h2>
+            }
+          >
+          <p className="mt-3 max-w-3xl lede">
             Five steps, nothing to pay for the reading, and no obligation at any
             point.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="steps steps-two mt-12">
             {steps.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
 
-          <p className="mt-6 max-w-3xl text-[0.95rem]">
+          <p className="mt-5 max-w-3xl">
             We do not promise a score, a number or a date — nobody honestly can,
             because the bureau calculates the score and the lender controls how
             quickly it responds. What we promise is that you will know what is in
             your own report and what your options actually are.
           </p>
+          </Fold>
         </Container>
       </section>
 
       {/* 8. What you will need --------------------------------------- */}
-      <section aria-labelledby="documents-heading">
-        <Container className="py-14 sm:py-16">
+      <section id="documents" className="scroll-anchor" aria-labelledby="documents-heading">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2
-              id="documents-heading"
-              className="text-2xl font-bold sm:text-3xl"
+            <Fold
+              summary={
+                <h2
+                  id="documents-heading"
+                  className="h-section"
+                >
+                  What you will need
+                </h2>
+              }
             >
-              What you will need
-            </h2>
             <p className="mt-4">
               Very little at this stage. Loan papers, statements and closure
               letters only become relevant later, if we find something worth
               disputing — there is no point gathering them before we know whether
               they are needed.
             </p>
-            <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
               {documents.map((doc) => (
                 <li key={doc} className="flex gap-2.5">
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                  <span className="icon-tile icon-tile-sm icon-round">
                     <CheckIcon />
                   </span>
-                  <span className="text-[0.95rem]">{doc}</span>
+                  <span >{doc}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-5 text-[0.95rem]">
+            <p className="mt-6">
               If you have reports from more than one bureau, send them all.
               Seeing two files side by side often explains a refusal that one
               file on its own does not.
             </p>
+            </Fold>
           </div>
         </Container>
       </section>
 
       {/* 9. FAQ ------------------------------------------------------ */}
       <section
+        id="faq"
         aria-labelledby="faq-heading"
-        className="border-y border-line bg-surface"
+        className="scroll-anchor band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="faq-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="faq-heading" className="h-section">
             Common questions about report analysis
           </h2>
 
-          <div className="mt-8 divide-y divide-line border-y border-line">
+          <div className="faq-list mt-6">
             {faqs.map((faq) => (
-              <details key={faq.q} className="group py-2">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-navy-800 marker:content-none">
+              <details key={faq.q} className="faq-item">
+                <summary className="faq-summary">
                   {faq.q}
                   <svg
                     viewBox="0 0 24 24"
@@ -629,12 +667,12 @@ export default function CreditReportAnalysisPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     aria-hidden="true"
-                    className="h-5 w-5 shrink-0 text-brand-green transition-transform group-open:rotate-45"
+                    className="faq-chevron"
                   >
-                    <path d="M12 5v14M5 12h14" />
+                    <path d="m6 9 6 6 6-6" />
                   </svg>
                 </summary>
-                <p className="pb-4 text-[0.95rem]">{faq.a}</p>
+                <p className="faq-answer">{faq.a}</p>
               </details>
             ))}
           </div>
@@ -644,35 +682,35 @@ export default function CreditReportAnalysisPage() {
       {/* 10. CTA ----------------------------------------------------- */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Send your credit report on WhatsApp for a free check
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             Stop guessing why the score is low. Send the PDF and we will read it
             properly and tell you what is in it — what is wrong, what is right,
             and what is worth doing about it. No fee for the reading, and no
             pressure afterwards.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Send my report on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

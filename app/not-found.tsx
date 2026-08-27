@@ -48,24 +48,24 @@ export default function NotFound() {
   return (
     <>
       {/* Hero ------------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             Page not found
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             We could not find that page
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             The link may be old, or the address may have a typo in it. Nothing
             has gone wrong with your credit report — this is just a missing page
             on our website. Here is where to go instead.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href="/"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               Go to the home page
             </Link>
@@ -73,7 +73,7 @@ export default function NotFound() {
               href={notFoundWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Ask us on WhatsApp
@@ -84,16 +84,16 @@ export default function NotFound() {
 
       {/* Useful links ----------------------------------------------- */}
       <section aria-labelledby="links-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="links-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="links-heading" className="h-section">
             Main pages
           </h2>
-          <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
             {usefulLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="flex min-h-14 items-center rounded-xl border border-line bg-white px-5 font-semibold text-navy-800 hover:bg-navy-50"
+                  className="card card-link min-h-16 flex-row items-center px-6 py-4 text-lg font-bold text-navy-800"
                 >
                   {link.label}
                 </Link>
@@ -106,22 +106,22 @@ export default function NotFound() {
       {/* Services --------------------------------------------------- */}
       <section
         aria-labelledby="services-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="services-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="services-heading" className="h-section">
             What we help with
           </h2>
-          <p className="mt-3 max-w-3xl">
+          <p className="mt-3 max-w-3xl lede">
             If you were looking for a particular problem on your credit report,
             it is probably one of these.
           </p>
-          <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:gap-4">
             {serviceNav.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="flex min-h-14 items-center rounded-xl border border-line bg-white px-5 font-semibold text-navy-800 hover:bg-navy-50"
+                  className="card card-link min-h-16 flex-row items-center px-6 py-4 text-lg font-bold text-navy-800"
                 >
                   {link.label}
                 </Link>
@@ -134,33 +134,33 @@ export default function NotFound() {
       {/* CTA -------------------------------------------------------- */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Still cannot find it?
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             Tell us what you were looking for and we will point you to it — or
             just send your credit report and we will read it free.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={notFoundWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Message on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

@@ -118,15 +118,15 @@ export default function AboutPage() {
   return (
     <>
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             About us
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             About {siteConfig.name}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             Every day in India, people are refused a loan because of something
             written in their credit report — an old account marked wrongly, a
             paid loan still shown as unpaid, sometimes a loan that was never
@@ -138,9 +138,9 @@ export default function AboutPage() {
 
       {/* 2. Our story ----------------------------------------------- */}
       <section aria-labelledby="story-heading">
-        <Container className="py-14 sm:py-16">
+        <Container reveal className="section">
           <div className="max-w-3xl">
-            <h2 id="story-heading" className="text-2xl font-bold sm:text-3xl">
+            <h2 id="story-heading" className="h-section">
               Our story
             </h2>
             <p className="mt-4">
@@ -172,25 +172,25 @@ export default function AboutPage() {
       {/* 3. What we believe ------------------------------------------ */}
       <section
         aria-labelledby="beliefs-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="beliefs-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="beliefs-heading" className="h-section">
             What we believe
           </h2>
           <p className="mt-3 max-w-2xl">
             Four rules we do not bend, even when bending them would earn us more.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
             {beliefs.map((belief) => (
               <li key={belief.title} className="flex gap-3">
-                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                <span className="icon-tile icon-round">
                   <CheckIcon />
                 </span>
                 <div>
-                  <h3 className="text-lg font-semibold">{belief.title}</h3>
-                  <p className="mt-1.5 text-[0.95rem]">{belief.body}</p>
+                  <h3 className="h-card">{belief.title}</h3>
+                  <p className="mt-2">{belief.body}</p>
                 </div>
               </li>
             ))}
@@ -200,8 +200,8 @@ export default function AboutPage() {
 
       {/* 4. How we work ---------------------------------------------- */}
       <section aria-labelledby="process-heading">
-        <Container className="py-14 sm:py-16">
-          <h2 id="process-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="process-heading" className="h-section">
             How we work
           </h2>
           <p className="mt-3 max-w-2xl">
@@ -211,25 +211,19 @@ export default function AboutPage() {
             we use it for you.
           </p>
 
-          <ol className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ol className="steps steps-two mt-12">
             {process.map((step, index) => (
-              <li
-                key={step.title}
-                className="rounded-xl border border-line bg-white p-5"
-              >
-                <span
-                  aria-hidden="true"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-navy-800 text-lg font-bold text-white"
-                >
+              <li key={step.title} className="step">
+                <span aria-hidden="true" className="step-num">
                   {index + 1}
                 </span>
-                <h3 className="mt-4 text-lg font-semibold">{step.title}</h3>
-                <p className="mt-2 text-[0.95rem]">{step.body}</p>
+                <h3 className="mt-5 h-card">{step.title}</h3>
+                <p className="mt-2">{step.body}</p>
               </li>
             ))}
           </ol>
 
-          <p className="mt-6 max-w-3xl text-[0.95rem]">
+          <p className="mt-5 max-w-3xl">
             We use nothing except the official dispute channels of the credit
             bureaus and lenders, exactly as the RBI and credit information
             company rules require. We never pose as you, we never approach anyone
@@ -243,10 +237,10 @@ export default function AboutPage() {
       {/* 5. Who we help ---------------------------------------------- */}
       <section
         aria-labelledby="who-heading"
-        className="border-y border-line bg-surface"
+        className="band-mint"
       >
-        <Container className="py-14 sm:py-16">
-          <h2 id="who-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <h2 id="who-heading" className="h-section">
             Who we help
           </h2>
           <p className="mt-3 max-w-2xl">
@@ -254,16 +248,16 @@ export default function AboutPage() {
             look.
           </p>
 
-          <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
             {whoWeHelp.map((person) => (
               <li
                 key={person}
                 className="flex gap-3 rounded-xl border border-line bg-white p-5"
               >
-                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-green-light text-brand-green">
+                <span className="icon-tile icon-round">
                   <CheckIcon />
                 </span>
-                <span className="text-[0.95rem]">{person}</span>
+                <span >{person}</span>
               </li>
             ))}
           </ul>
@@ -272,21 +266,21 @@ export default function AboutPage() {
 
       {/* 6. An honest note ------------------------------------------- */}
       <section aria-labelledby="honest-heading">
-        <Container className="py-14 sm:py-16">
-          <div className="max-w-3xl rounded-xl border border-line bg-white p-6 sm:p-8">
-            <h2 id="honest-heading" className="text-2xl font-bold sm:text-3xl">
+        <Container reveal className="section">
+          <div className="card max-w-3xl">
+            <h2 id="honest-heading" className="h-section">
               An honest note
             </h2>
             <p className="mt-4">
               We would rather lose a customer than mislead one, so please read
               this part before you contact us.
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-2.5">
               {honestNotes.map((note) => (
                 <li key={note} className="flex gap-3">
                   <span
                     aria-hidden="true"
-                    className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-800"
+                    className="bullet-dot"
                   />
                   <span>{note}</span>
                 </li>
@@ -303,34 +297,34 @@ export default function AboutPage() {
       {/* 7. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Talk to us before you decide
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             Send us your credit report and we will tell you what is wrong with
             it. The first analysis is free, and if we cannot help you we will say
             so straight away.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={aboutWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Chat on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}

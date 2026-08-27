@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import JumpNav from "@/components/JumpNav";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
 export const metadata: Metadata = {
@@ -259,36 +260,28 @@ export default function FaqPage() {
       />
 
       {/* 1. Hero ---------------------------------------------------- */}
-      <section className="bg-navy-800 text-white">
-        <Container className="py-14 sm:py-20">
-          <p className="text-sm font-semibold tracking-wide text-navy-100 uppercase">
+      <section className="hero-navy">
+        <Container className="section-hero">
+          <p className="eyebrow text-navy-100">
             Questions and answers
           </p>
-          <h1 className="mt-3 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
+          <h1 className="mt-4 h-display text-white">
             Frequently Asked Questions
           </h1>
-          <p className="mt-5 max-w-2xl text-lg text-navy-100">
+          <p className="mt-6 lede max-w-2xl text-navy-100">
             Everything people ask us about CIBIL scores, credit report errors and
             getting them corrected — including the questions where the honest
             answer is no. If yours is not here, message us and ask.
           </p>
-
-          <nav aria-label="Sections on this page" className="mt-8">
-            <ul className="flex flex-wrap gap-2">
-              {faqGroups.map((group) => (
-                <li key={group.id}>
-                  <a
-                    href={`#${group.id}`}
-                    className="inline-flex min-h-11 items-center rounded-lg bg-navy-700 px-4 text-sm font-semibold text-white hover:bg-navy-600"
-                  >
-                    {group.heading}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
         </Container>
       </section>
+
+      <JumpNav
+        items={faqGroups.map((group) => ({
+          id: group.id,
+          label: group.heading,
+        }))}
+      />
 
       {/* 2-7. Question groups ---------------------------------------- */}
       {faqGroups.map((group, groupIndex) => (
@@ -297,22 +290,22 @@ export default function FaqPage() {
           id={group.id}
           aria-labelledby={`${group.id}-heading`}
           className={
-            groupIndex % 2 === 1 ? "border-y border-line bg-surface" : undefined
+            groupIndex % 2 === 1 ? "scroll-anchor band-mint" : "scroll-anchor"
           }
         >
-          <Container className="py-14 sm:py-16">
+          <Container reveal className="section">
             <h2
               id={`${group.id}-heading`}
-              className="text-2xl font-bold sm:text-3xl"
+              className="h-section"
             >
               {group.heading}
             </h2>
-            <p className="mt-3 max-w-3xl">{group.intro}</p>
+            <p className="mt-3 max-w-3xl lede">{group.intro}</p>
 
-            <div className="mt-8 divide-y divide-line border-y border-line">
+            <div className="faq-list mt-6">
               {group.items.map((faq) => (
-                <details key={faq.q} className="group py-2">
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-base font-semibold text-navy-800 marker:content-none">
+                <details key={faq.q} className="faq-item">
+                  <summary className="faq-summary">
                     {faq.q}
                     <svg
                       viewBox="0 0 24 24"
@@ -322,12 +315,12 @@ export default function FaqPage() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       aria-hidden="true"
-                      className="h-5 w-5 shrink-0 text-brand-green transition-transform group-open:rotate-45"
+                      className="faq-chevron"
                     >
-                      <path d="M12 5v14M5 12h14" />
+                      <path d="m6 9 6 6 6-6" />
                     </svg>
                   </summary>
-                  <p className="pb-4 text-[0.95rem]">{faq.a}</p>
+                  <p className="faq-answer">{faq.a}</p>
                 </details>
               ))}
             </div>
@@ -338,16 +331,16 @@ export default function FaqPage() {
       {/* 8. CTA ------------------------------------------------------ */}
       <section
         aria-labelledby="cta-heading"
-        className="border-t border-line bg-navy-800 text-white"
+        className="band-navy"
       >
-        <Container className="py-14 pb-28 sm:py-16 sm:pb-28">
+        <Container reveal className="section-cta">
           <h2
             id="cta-heading"
-            className="text-2xl font-bold text-white sm:text-3xl"
+            className="h-section text-white"
           >
             Still have a question?
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-100">
+          <p className="mt-5 lede max-w-2xl text-navy-100">
             Ask us directly — there is no charge for a question, and no
             obligation afterwards. If you would rather we simply looked at your
             report, send it across for a{" "}
@@ -357,19 +350,19 @@ export default function FaqPage() {
             and we will tell you what is in it.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
               href={pageWhatsapp}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-brand-green px-6 text-base font-semibold text-white shadow-sm hover:bg-brand-green-dark"
+              className="btn btn-primary"
             >
               <WhatsappIcon />
               Ask on WhatsApp
             </a>
             <a
               href={telHref}
-              className="inline-flex min-h-14 items-center justify-center gap-2 rounded-lg bg-white px-6 text-base font-semibold text-navy-800 shadow-sm hover:bg-navy-50"
+              className="btn btn-secondary"
             >
               <PhoneIcon />
               Call {siteConfig.phoneDisplay}
