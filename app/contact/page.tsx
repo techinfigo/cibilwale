@@ -11,7 +11,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact Us — Talk to a Real Person About Your Credit Report",
   description:
-    "Reach Cibil Wale on WhatsApp, phone or email. Based in Agra, Uttar Pradesh and working with people across India — the whole process is handled remotely, so nobody needs to travel to us. We never ask for bank passwords or OTPs.",
+    "Talk to a real person about your credit report — WhatsApp, phone or email. Based in Agra, working across India. We never ask for passwords or OTPs.",
   alternates: { canonical: "/contact" },
 };
 

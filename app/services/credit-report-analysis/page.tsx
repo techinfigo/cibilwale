@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Credit Report Analysis — Find Out Why Your CIBIL Score Is Low",
   description:
-    "Loan refused and nobody told you why? We read your full credit report line by line — accounts, payment history, DPD marks, utilisation, enquiries and negative flags — and tell you in plain language what is pulling your score down, what looks like an error, and what you can fix yourself. Free first reading from Cibil Wale, Agra.",
+    "Not sure why your CIBIL score is low? We read your full report line by line and tell you in plain words what is wrong and what can be fixed. Free.",
   alternates: { canonical: "/services/credit-report-analysis" },
 };
 
@@ -210,6 +211,14 @@ export default function CreditReportAnalysisPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Credit Report Analysis", path: "/services/credit-report-analysis" },
+        ]}
+      />
+
       {/* 1. Hero ---------------------------------------------------- */}
       <section className="bg-navy-800 text-white">
         <Container className="py-14 sm:py-20">

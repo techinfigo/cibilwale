@@ -7,7 +7,7 @@ import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Our Services",
   description:
-    "Credit report problems Cibil Wale fixes — written off removal, suit filed removal, settled to closed, overdue and DPD correction, account mismatch correction and full credit report analysis. Free first analysis, all India.",
+    "Six ways we correct credit report errors: written off, suit filed, settled to closed, DPD, account mismatch and full report analysis. Free first check.",
   alternates: { canonical: "/services" },
 };
 

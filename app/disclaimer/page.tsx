@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Disclaimer",
   description:
-    "Cibil Wale is an independent credit report correction service. We are not affiliated with, endorsed by or connected to TransUnion CIBIL, Experian, Equifax, CRIF High Mark, the Reserve Bank of India or any bank, and we do not guarantee any score or outcome.",
+    "Cibil Wale is independent and not affiliated with CIBIL, Experian, Equifax, CRIF High Mark, the RBI or any bank. We guarantee no score or outcome.",
   alternates: { canonical: "/disclaimer" },
 };
 

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Suit Filed in CIBIL Report — How to Remove It",
   description:
-    "Suit filed showing in your CIBIL report? Learn what the status means, why lenders reject applications outright, the common reasons it appears wrongly, and when it can genuinely be corrected — case withdrawn, settled, decided in your favour, or not yours. Free first check from Cibil Wale.",
+    "Suit filed on your CIBIL report can block a loan on sight. Learn what it means, how long it stays and when it can be corrected. Free first check.",
   alternates: { canonical: "/services/suit-filed-removal" },
 };
 
@@ -152,6 +153,14 @@ export default function SuitFiledRemovalPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Suit Filed Removal", path: "/services/suit-filed-removal" },
+        ]}
+      />
+
       {/* 1. Hero ---------------------------------------------------- */}
       <section className="bg-navy-800 text-white">
         <Container className="py-14 sm:py-20">

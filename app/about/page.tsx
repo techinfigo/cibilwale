@@ -5,7 +5,7 @@ import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Cibil Wale is a credit report correction service based in Agra, helping people across India dispute genuine errors in their CIBIL report. Honest advice, fixed pricing, and no promises about score numbers.",
+    "Who we are and why we work this way: a credit report correction service in Agra disputing genuine errors, with fixed pricing and no score promises.",
   alternates: { canonical: "/about" },
 };
 

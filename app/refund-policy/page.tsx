@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Refund Policy",
   description:
-    "When Cibil Wale will refund a fee and when it will not. Our fee pays for preparing and filing a dispute, not for a guaranteed outcome — the free report analysis costs nothing, and we do not charge when we cannot help.",
+    "When Cibil Wale refunds a fee and when it does not. Our fee pays for preparing and filing a dispute, not a guaranteed outcome. First reading is free.",
   alternates: { canonical: "/refund-policy" },
 };
 

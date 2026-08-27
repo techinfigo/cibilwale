@@ -36,10 +36,75 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+/**
+ * Site-wide Organization and LocalBusiness structured data. Every value
+ * comes from lib/config.ts, so the markup cannot drift from the contact
+ * details shown on the pages. Rendered once, in the root layout.
+ */
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
+      name: siteConfig.name,
+      legalName: siteConfig.legalName,
+      url: siteConfig.url,
+      description: siteConfig.description,
+      email: siteConfig.email,
+      telephone: siteConfig.phone,
+      areaServed: {
+        "@type": "Country",
+        name: "India",
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: siteConfig.city,
+        addressRegion: siteConfig.state,
+        addressCountry: siteConfig.country,
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        telephone: siteConfig.phone,
+        email: siteConfig.email,
+        areaServed: "IN",
+        availableLanguage: ["en", "hi"],
+      },
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": `${siteConfig.url}/#localbusiness`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      description: siteConfig.description,
+      email: siteConfig.email,
+      telephone: siteConfig.phone,
+      parentOrganization: { "@id": `${siteConfig.url}/#organization` },
+      areaServed: {
+        "@type": "Country",
+        name: "India",
+      },
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: siteConfig.city,
+        addressRegion: siteConfig.state,
+        addressCountry: siteConfig.country,
+      },
+    },
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en-IN" className="h-full">
       <body className="flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-md focus:bg-navy-800 focus:px-4 focus:py-2 focus:text-white"

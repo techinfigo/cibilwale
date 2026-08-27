@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Wrong Details in CIBIL Report — How to Correct Them",
   description:
-    "Wrong name, PAN, date of birth, address, loan amount or an account that is not yours in your CIBIL report? Learn how these mismatches happen, why they block loans, when they can be corrected, and what to do if you suspect identity fraud. Free first check from Cibil Wale, Agra.",
+    "Wrong name, PAN or address, or a loan that is not yours on your CIBIL report? Learn how these mix-ups happen and how to correct them. Free check.",
   alternates: { canonical: "/services/account-mismatch-correction" },
 };
 
@@ -196,6 +197,14 @@ export default function AccountMismatchCorrectionPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Account Mismatch Correction", path: "/services/account-mismatch-correction" },
+        ]}
+      />
+
       {/* 1. Hero ---------------------------------------------------- */}
       <section className="bg-navy-800 text-white">
         <Container className="py-14 sm:py-20">

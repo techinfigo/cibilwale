@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "What personal data Cibil Wale collects — name, phone, email, PAN and your credit report — why we collect it, how it is stored, and how long we keep it. We never ask for bank passwords or OTPs, we do not sell your data, and you can ask us to delete it.",
+    "What data Cibil Wale collects, why we need it, how it is stored and how to have it deleted. We never ask for bank passwords and never sell your data.",
   alternates: { canonical: "/privacy-policy" },
 };
 

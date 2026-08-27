@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Terms and Conditions",
   description:
-    "The terms on which Cibil Wale provides credit report dispute assistance — what the service is and is not, your responsibilities, payment terms, limits on our liability, and the law that governs any dispute.",
+    "The terms we work on: what our credit report dispute service does and does not do, your responsibilities, payment, liability and governing law.",
   alternates: { canonical: "/terms-and-conditions" },
 };
 

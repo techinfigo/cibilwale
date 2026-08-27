@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title:
     "CIBIL Score Improvement & Credit Report Correction in India | Cibil Wale",
   description:
-    "Loan rejected because of your CIBIL report? Cibil Wale helps you dispute genuine errors — written off, suit filed, wrong settled status, wrong DPD and accounts that are not yours. Free first analysis. Based in Agra, serving all India.",
+    "Loan rejected over your CIBIL report? We find and dispute genuine errors — written off, suit filed, wrong settled status and more. Free first check.",
   alternates: { canonical: "/" },
 };
 

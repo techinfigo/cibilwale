@@ -6,7 +6,7 @@ import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions About CIBIL Score and Credit Reports",
   description:
-    "Straight answers about CIBIL scores, credit report errors, the dispute process, what we charge and what we cannot do. Including the honest ones — no service can guarantee a score, remove a genuine default or delete your credit history.",
+    "Straight answers on CIBIL scores, report errors, the dispute process and our fees — including what no service can do, such as guarantee a score.",
   alternates: { canonical: "/faq" },
 };
 

@@ -6,7 +6,7 @@ import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Free Credit Report Check — Find Out What Is Wrong With Yours",
   description:
-    "Send your credit report on WhatsApp and we will read it free. You get a plain-English explanation of what is on it, which entries are hurting your score, which look like errors that can be disputed, and what fixing them would cost. No obligation, and we never ask for passwords or OTPs.",
+    "Send your credit report on WhatsApp and we will read it free and tell you what is wrong and what can be disputed. No obligation, no passwords, no OTPs.",
   alternates: { canonical: "/free-credit-report" },
 };
 

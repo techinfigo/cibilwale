@@ -5,7 +5,7 @@ import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 export const metadata: Metadata = {
   title: "Pricing — Simple, Fixed Prices for Credit Report Correction",
   description:
-    "Fixed prices for CIBIL report correction, agreed before any work starts. The first reading of your report is free, there is no monthly fee, and we tell you honestly if nothing can be disputed. Cibil Wale, Agra — serving all of India.",
+    "Fixed prices for CIBIL report correction, agreed before work starts. The first report reading is free, there is no monthly fee and no hidden charges.",
   alternates: { canonical: "/pricing" },
 };
 

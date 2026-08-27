@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Written Off in CIBIL Report — How to Remove It",
   description:
-    "Written off showing in your CIBIL report? Learn what it means, why lenders reject you for it, how long it stays, and when it can genuinely be corrected — wrong status after repayment, wrong amount, or an account that is not yours. Free first check from Cibil Wale.",
+    "Written off on your CIBIL report? Learn what it means, how long it stays and when it can genuinely be corrected. Free first check from Cibil Wale.",
   alternates: { canonical: "/services/written-off-removal" },
 };
 
@@ -143,6 +144,14 @@ export default function WrittenOffRemovalPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Written Off Removal", path: "/services/written-off-removal" },
+        ]}
+      />
+
       {/* 1. Hero ---------------------------------------------------- */}
       <section className="bg-navy-800 text-white">
         <Container className="py-14 sm:py-20">

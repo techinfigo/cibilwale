@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Overdue and DPD Errors in CIBIL Report — How to Correct Them",
   description:
-    "Wrong late payment days or an overdue amount in your CIBIL report? Learn how the DPD payment grid works, why recent late marks hurt most, the common DPD errors banks make, and when they can genuinely be corrected. Free first check from Cibil Wale, Agra.",
+    "Late payment marks or an overdue amount you already cleared? Learn how the DPD grid works and when wrong marks can be disputed. Free first check.",
   alternates: { canonical: "/services/overdue-dpd-correction" },
 };
 
@@ -153,6 +154,14 @@ export default function OverdueDpdCorrectionPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Overdue and DPD Correction", path: "/services/overdue-dpd-correction" },
+        ]}
+      />
+
       {/* 1. Hero ---------------------------------------------------- */}
       <section className="bg-navy-800 text-white">
         <Container className="py-14 sm:py-20">

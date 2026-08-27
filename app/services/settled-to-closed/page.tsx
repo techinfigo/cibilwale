@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/Container";
+import BreadcrumbJsonLd from "@/components/BreadcrumbJsonLd";
 import { siteConfig, telHref, whatsappHref } from "@/lib/config";
 
 export const metadata: Metadata = {
   title: "Settled Status in CIBIL Report — How to Change It to Closed",
   description:
-    "Account showing settled instead of closed in your CIBIL report? Learn the difference between settled and closed, why lenders read settled as unpaid, how long it stays, and when the status can genuinely be corrected — full payment, wrong amount, or an account that is not yours. Free first check from Cibil Wale.",
+    "Report says settled when you paid in full? Learn why lenders read settled as a loss, and when the status can be disputed to closed. Free first check.",
   alternates: { canonical: "/services/settled-to-closed" },
 };
 
@@ -152,6 +153,14 @@ export default function SettledToClosedPage() {
 
   return (
     <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", path: "/" },
+          { name: "Services", path: "/services" },
+          { name: "Settled to Closed", path: "/services/settled-to-closed" },
+        ]}
+      />
+
       {/* 1. Hero ---------------------------------------------------- */}
       <section className="bg-navy-800 text-white">
         <Container className="py-14 sm:py-20">
